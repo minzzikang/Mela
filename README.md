@@ -1,12 +1,6 @@
 # :notes: Mela! - 음악 작업을 위한 구인, 공동 작업 플랫폼
 ![로고](./frontend/src/assets/images/logo.png)
 
-## Mela! 링크 : https://i10c201.p.ssafy.io/
-- 테스트 ID : mela@ssafy.com <br>
-- 테스트 PW : mela!1234
-
-## 소개 영상 보기 : 
-
 ## 프로젝트 진행 기간
 2024.01.08(월) ~ 2024.02.16(금)
 
@@ -106,7 +100,7 @@ Mela!는 メラメラ(메라메라), 일본어로 활활을 뜻하는 의성어�
 ## :sunglasses: 팀 소개 및 역할
 |담당|이름|역할|소감|
 |---|---|---|---|
-|팀장|강민지|UI/UX 구현, PPT/UCC 제작, UX 디자인|
+|팀장|강민지|UI/UX 구현, PPT/UCC 제작, UX 디자인| 첫 프로젝트여서 부족한 점이 많았으나 기획부터 구현까지 직접해보는 과정이 의미있었습니다.|
 |FE팀장|유병욱|UI/UX 구현| 처음 접하는 환경에서 기획부터 서비스까지 모두 직접 이루는 과정이 새롭고, 즐거웠습니다.|
 |FE|이현비|UI/UX 구현|속상해요|
 |BE팀장|최시원|API 설계, 배포|
@@ -122,7 +116,6 @@ Mela!는 メラメラ(메라메라), 일본어로 활활을 뜻하는 의성어�
 
 - ### [화면 정의서](https://www.figma.com/file/IX4LHI9096wtPgbeMZF4tr/C201-team-library?type=design&node-id=0%3A1&mode=design&t=ZOYZB5RR2vzpZ1Hh-1)
 - ### [요구사항 명세서](https://valuable-flyingfish-5f5.notion.site/4e8269aba1c0414bb997d0a2554833af?pvs=74)
-- ### [API 설계](https://valuable-flyingfish-5f5.notion.site/API-aff8baaa08d44954a433ef4645ba6dad)
 
 ## :rocket: 프로젝트 전체 스크린샷
 ### 1. Main
