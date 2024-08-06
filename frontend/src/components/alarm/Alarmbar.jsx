@@ -2,9 +2,8 @@ import React, { useState, useEffect } from "react"
 import { Link, useNavigate } from "react-router-dom"
 import styled from 'styled-components'
 import { GoBell } from "react-icons/go"
-import DefaultButton from "../DefaultButton"
+import Button from "../../common/Button"
 import { notification } from '../../API/UserAPI'
-import { button } from '@material-tailwind/react';
 
 
 function Alarmbar () {
@@ -34,7 +33,7 @@ function Alarmbar () {
                     <GoBell className="icon"/>
                     <span>Alarm</span>
                 </div>
-                <DefaultButton 
+                <Button 
                     text='+'
                     width='1.5rem'
                     height='1rem'

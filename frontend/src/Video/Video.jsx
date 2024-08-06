@@ -4,7 +4,6 @@ import { useState, useEffect, useRef } from "react";
 import { useParams, useLocation } from "react-router-dom"; 
 import styled from "styled-components";
 import axios from "axios";
-import icon from "../assets/icons/logo.png";
 import UserVideoComponent from "./UserVideoComponent";
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import MicRoundedIcon  from '@mui/icons-material/MicRounded' ;

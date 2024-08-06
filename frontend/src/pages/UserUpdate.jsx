@@ -1,8 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useNavigate } from 'react-router-dom';
 import styled from "styled-components";
-import DefaultButton from "../components/DefaultButton";
-import { MdLockOutline } from "react-icons/md";
+import Button from "../common/Button";
 import { CgDanger } from "react-icons/cg";
 import { fetchUser, updateUser, deleteUser } from "../API/UserAPI";
 import { getImg } from "../API/FileAPI";
@@ -374,7 +373,7 @@ function UserUpdateForm() {
                 </div>
             </Form>
             <ButtonWrapper>
-                <DefaultButton 
+                <Button 
                     text={'Cancel'}
                     backgroundcolor={'#6C7383'}
                     fontcolor={'white'}
@@ -382,7 +381,7 @@ function UserUpdateForm() {
                     onClick={handleCancel}
                 />
                 <div className="save-btn">
-                    <DefaultButton 
+                    <Button 
                         text={'Save'}
                         backgroundcolor={'#254ef8'}
                         fontcolor={'white'}

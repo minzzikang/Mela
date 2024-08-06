@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom'
 import styled from 'styled-components'
 import AlarmAll from '../components/alarm/AlarmAll'
 import AlarmUnread from '../components/alarm/AlarmUnread'
-import DefaultButton from '../components/DefaultButton'
 import { FaRegBell } from "react-icons/fa6"
 import { LuBellDot } from "react-icons/lu"
 import { notification, delNotification } from '../API/UserAPI'
@@ -28,7 +27,6 @@ function AlarmMain () {
             try {
                 const res = await notification()
                 setData(res)
-                // console.log(res)
             } catch (err) {
                 // console.log(err)
             }
@@ -39,7 +37,6 @@ function AlarmMain () {
     const handleDelete = async (notificationIdx) => {
         try {
             await delNotification({ notificationid : notificationIdx})
-            // console.log(notificationIdx)
             
             const response = await notification()
             setData(response)

@@ -1,5 +1,5 @@
 import DefaultFileShape from "../components/DefaultFolderShape";
-import Navbar from "../components/Navbar";
+import Navbar from "../common/Navbar";
 import Sidebar from "../components/Sidebar";
 import styled from "styled-components";
 import { Outlet, useNavigate } from "react-router-dom";
@@ -8,7 +8,7 @@ import Alarmbar from "../components/alarm/Alarmbar";
 import { shortsList } from "../API/ShortsAPI";
 import { recommendList } from "../API/GatherAPI";
 import { myGatherList } from "../API/UserAPI";
-import DefaultButton from "../components/DefaultButton";
+import Button from "../common/Button";
 
 function Gather() {
   const [recommend, setRecommend] = useState([])
@@ -30,7 +30,6 @@ function Gather() {
             page: 1,
             size: 10,
           });
-          // console.log(myGatherInfo)
           setMyGather(myGatherInfo.boardRecruitRes)
           const shortsInfo = await shortsList()
           setShorts(shortsInfo)
@@ -42,9 +41,6 @@ function Gather() {
       gatherInfo()
   
     },[])
-
-    // console.log(myGather)
-    // console.log(recommend)
 
     const recommendLimitList = () => {
       const result = []
@@ -93,7 +89,6 @@ function Gather() {
       navigate('/gather/create')
     }
 
-    // console.log(myGatherLimitList())
   return ( 
     <GatherContainer>
       <SideDiv>
@@ -104,7 +99,7 @@ function Gather() {
         <div className="main-box">
           <div className="header">
             <h3>내가 작성한 공고</h3>
-            <DefaultButton
+            <Button
               text='글쓰기'
               width='4rem'
               height='2rem'

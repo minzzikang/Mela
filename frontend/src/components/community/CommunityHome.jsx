@@ -5,11 +5,11 @@ import { BoardList } from "../../API/BoardAPI";
 import { useNavigate, Link } from "react-router-dom";
 import CoSigninModal from "./CoSigninModal";
 import useStore from "../../status/store";
-import DefaultButton from "../DefaultButton";
+import Button from "../../common/Button";
 import { GoDotFill } from "react-icons/go";
 import moment from "moment";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
-import { AiOutlineLike } from "react-icons/ai";
+
 
 function CommunityHome() {
   const [sortType, setSortType] = useState("");
@@ -78,11 +78,9 @@ function CommunityHome() {
     }
   };
   const islogined = useStore((state) => state.islogined);
-  // console.log(islogined, "로그인여부");
 
   const Create = (e) => {
     e.preventDefault();
-    // console.log(islogined, "로그인여부");
     if (islogined) {
       movePage("/community/create");
     } else {
@@ -215,7 +213,7 @@ function CommunityHome() {
           </div>
           <br />
           <div className="buttonWrapper">
-            <DefaultButton
+            <Button
               onClick={Create}
               text="글쓰기"
               width="4rem"

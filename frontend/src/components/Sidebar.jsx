@@ -1,13 +1,11 @@
-import React, { useState, Fragment, useEffect } from "react";
-import { Link, useParams } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { Card, List, ListItem, ListItemPrefix } from "@material-tailwind/react";
-
-import { FaRegUser, FaRegHeart } from "react-icons/fa6";
+import { FaRegUser } from "react-icons/fa6";
 import { AiOutlineMessage } from "react-icons/ai";
 import { MdOutlineLocalFireDepartment, MdOutlineLogout } from "react-icons/md";
 import styled from "styled-components";
 import useStore from "../status/store";
-import {isLogined} from "../status/store";
 import { follower, followerList } from "../API/UserAPI";
 import { followee, followingList } from "../API/UserAPI";
 import { fetchUser } from "../API/UserAPI";
@@ -82,8 +80,6 @@ function Sidebar({ className, paddingtop }) {
   const { logout } = useStore()
   const [userValues, setUserValues] = useState({})
   const [portfolioValues, setPortfolioValues] = useState({})
-  // const isLogined = useStore(state => state.isLogined)
-  // const [userData, setUserData] = useState({})
   const [followers, setFollowers] = useState([])
   const [followings, setFollowings] = useState([])
   const [imageURL, setImageURL] = useState()
@@ -136,16 +132,7 @@ function Sidebar({ className, paddingtop }) {
     follow()
   },[userValues, portfolioValues])
 
-  // const followList = async () => {
-  //   try {
-  //     await followerList(userValues.emailId)
-  //   }
-  // }
-  // console.log(followers)
-  // console.log(followings)
-
   return (
-    // <DIV>
       <SideContainer className="contents" $paddingtop={paddingtop}>
         {userValues ? (
           <>
@@ -197,7 +184,6 @@ function Sidebar({ className, paddingtop }) {
           </>
         ) : <p>유저정보가 없습니다.</p>}
       </SideContainer>
-    //  </DIV>
   );
 }
 

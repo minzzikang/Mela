@@ -5,7 +5,7 @@ import SearchPortfolio from '../components/search/SearchPortfolio'
 import SearchUser from '../components/search/SearchUser'
 import SearchGather from '../components/search/SearchGather'
 import SearchCommunity from '../components/search/SearchCommunity'
-import Navbar from "../components/Navbar";
+import Navbar from "../common/Navbar";
 import Sidebar from "../components/Sidebar";
 import Alarmbar from "../components/alarm/Alarmbar";
 

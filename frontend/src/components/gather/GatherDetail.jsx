@@ -1,7 +1,5 @@
 import React from "react";
-
 import styled from "styled-components";
-
 import { useEffect, useState } from "react";
 import { RecruitDetail } from "../../API/GatherAPI";
 import useStore from "../../status/store";
@@ -14,7 +12,7 @@ import {
   checkBoardLike,
   BoardLike,
 } from "../../API/BoardAPI";
-import DefaultButton from "../DefaultButton";
+import Button from "../../common/Button";
 import { CreateChat } from "../../API/ChatAPI";
 import { GoHeart, GoHeartFill, GoBell } from "react-icons/go";
 import { FaRegClock } from "react-icons/fa6";
@@ -61,9 +59,7 @@ const GatherDetail = () => {
 
   const commentDeleteHandler = async (commentIdx) => {
     try {
-      // console.log(commentIdx);
       await CommentDelete({ boardIdx: boardIndex, commentIdx });
-      // console.log("삭제중");
       const response = await GetComment({ boardIdx: boardIndex });
       setComments(response.data);
     } catch (error) {
@@ -116,7 +112,6 @@ const GatherDetail = () => {
       }
     };
     Likecheck();
-    // console.log(isLiked, "좋아요 확인");
   }, [boardIndex, currentUserIdx]);
 
   const BoardLikeHandler = async () => {
@@ -154,7 +149,7 @@ const GatherDetail = () => {
             <h1>{data.title}</h1>
             <div className="chat-btn">
               {!isAuthor && (
-                <DefaultButton
+                <Button
                   text={"채팅연결"}
                   width={"6rem"}
                   onClick={handleChat}

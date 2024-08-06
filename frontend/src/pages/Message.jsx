@@ -15,42 +15,21 @@ function Message() {
   const [chatRooms, setChatRooms] = useState([]);
   const [roomIdx, setRoomIdx] = useState("");
   const [userIdx, setUserIdx] = useState("");
-  const [otheruserid, setOtheruserid] = useState();
   const [room, setRoom] = useState({});
   const [otherNickname, setOtherNickname] = useState("");
-
-  // const [userValue, setUserValue] = useState('')
-  // const [myProfile, setMyProfile] = useState('')
-  // const [otherValue, setOtherValue] = useState('')
-  // const [otherProfile, setOtherProfile] = useState('')
   const [imgUrl, setImgUrl] = useState([])
   const user = useStore((state) => state.user);
 
   useEffect(() => {
     useStore.getState().fetchUser();
     findAllRooms();
-
-    // const fetch = async() => {
-    //   try {
-    //     const myinfo = await fetchUser()
-    //     setUserValue(myinfo)
-    //   } catch (err) {
-    //     console.log(err)
-    //   }
-    // }
   }, []);
+  
 
   const findAllRooms = async () => {
     try {
       const response = await ChatList();
-      // console.log("findAllRooms : ", response);
       setChatRooms(response);
-
-      // const otherInfos = response.map(async (room) => {
-      //   const res = await othersInfo(room.user.emailId)
-      //   setOtherValue(res)
-      //   setOtherProfile(res[1])
-      // })
     } catch (err) {
     }
   };
@@ -67,7 +46,6 @@ function Message() {
             result.push(defaultProfile)
           }
         }
-        // console.log(result)
         setImgUrl(result)
       } catch (err) {
       }
@@ -75,37 +53,18 @@ function Message() {
     imgInfo()
   },[userIdx])
 
-  // if (res[1].portfolio_picture_file_idx) {
-  //   const imginfo = await getImg(res[1].portfolio_picture_file_idx.fileIdx)
-  //   setOtherProfile(imginfo)
-  // } else {
-  //   setImgUrl(defaultprofile)
-  // }
-
-  // const imgURL = async (fileIdx) => {
-  //   try {
-  //     const response = await getImg(fileIdx)
-  //     setImgUrl(response.message)
-  //   } catch (err) {
-  //     console.log(err)
-  //   }
-  // }
-
   const enterRoom = (roomIdx, nickname) => {
     if (user) {
       setUserIdx(localStorage.getItem("userIdx"));
       setRoomIdx(roomIdx);
-      // console.log("학인 ", nickname);
       setOtherNickname(nickname);
     }
   };
 
   useEffect(() => {
     setUserIdx(localStorage.getItem("wschat.userIdx"));
-    // console.log("roomidx : ", roomIdx);
   }, []);
 
-  // console.log(room.user)
   return (
     <Container>
       {roomIdx ? (

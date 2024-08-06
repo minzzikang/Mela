@@ -1,13 +1,12 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import DefaultButton from "./DefaultButton";
+import Button from "../common/Button";
 import { useParams } from "react-router-dom";
 
 function PortfolioPin() {
     const navigate = useNavigate()
     const emailIdInfo = useParams()
-    // console.log(emailIdInfo.emailId)
     const goPortfolioAdd = () => {
         navigate(`/${emailIdInfo.emailId}/musics`)
     }
@@ -17,7 +16,7 @@ function PortfolioPin() {
         <Container>
             <div className="header">
                 <Title>Portfolio</Title>
-                <DefaultButton 
+                <Button 
                     text={'More'}
                     backgroundcolor={'#254ef8'}
                     fontcolor={'white'}

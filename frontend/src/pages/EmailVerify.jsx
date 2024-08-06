@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import styled from "styled-components";
 import { useSearchParams, useParams } from "react-router-dom";
 import { email } from "../API/AuthAPI";
-import DefaultButton from "../components/DefaultButton";
+import Button from "../common/Button";
 
 function EmailVerify() {
     const [searchParams] = useSearchParams()
@@ -31,14 +31,14 @@ function EmailVerify() {
         <Container>
             <h1>이메일 인증을 완료해주세요</h1>
             <div className="buttonWrapper">
-                <DefaultButton 
+                <Button 
                 text="인증 재전송"
                 onClick={sendEmail}
                 width='8rem'
                 />
             </div>
             <div className="buttonWrapper">
-                <DefaultButton 
+                <Button 
                 text="메인으로"
                 onClick={mainHandle}
                 width='8rem'

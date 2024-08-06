@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react"
 import styled from "styled-components"
-import DefaultButton from "../DefaultButton"
+import Button from "../../common/Button"
 import { FaSearch } from "react-icons/fa";
 import { TeamspaceMemberInvite } from "../../API/TeamspaceAPI";
 import { fetchUser, followingList } from "../../API/UserAPI";
@@ -181,7 +181,7 @@ function TeamspaceInviteModal () {
   
   return (
     <>
-    <DefaultButton
+    <Button
     text={'+ Invite'}
     backgroundcolor={'#254ef8'}
     fontcolor={'white'}
@@ -218,7 +218,7 @@ function TeamspaceInviteModal () {
         </>
       )}
     </ModalView>
-            <DefaultButton 
+            <Button 
             text={'Save'}
             backgroundcolor={'#254ef8'}
             fontcolor={'white'}

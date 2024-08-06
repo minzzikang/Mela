@@ -3,7 +3,7 @@ import { GatherList } from "./../../API/GatherAPI";
 import { useNavigate, useParams, Link } from "react-router-dom";
 import styled from "styled-components";
 import moment from "moment";
-import DefaultButton from './../DefaultButton';
+import Button from '../../common/Button';
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import { shortsList } from "../../API/ShortsAPI";
 
@@ -27,7 +27,6 @@ const GatherHome = () => {
 
   const Navigate = useNavigate();
   const NowPage = useParams();
-  // gather main은 따로 만들자.
 
   const Createbutton = () => {
     Navigate("/gather/create");
@@ -73,7 +72,6 @@ const GatherHome = () => {
 
   const pages = [];
   for (let i = 1; i <= Math.ceil(totalPage / 10) + 1; i++) {
-    // console.log(i, "페이지");
     pages.push(
       <PaginationButton
         onClick={() => setCurrentPage(i)}
@@ -122,7 +120,7 @@ const GatherHome = () => {
         <br />
         <br />
         <div className="buttonWrapper">
-            <DefaultButton
+            <Button
               onClick={Createbutton}
               text="글쓰기"
               width="4rem"
@@ -144,23 +142,6 @@ const GatherHome = () => {
             <IoIosArrowForward />
           </div>
           </div>
-      {/* <IoIosArrowBack onClick={async () => await onPageChange(currentPage - 1)}>이전</IoIosArrowBack> */}
-      {/* {
-        getPageNumbers().map((pageNumber) => (
-          <button
-            key={pageNumber}
-            onClick={() => onPageChange(pageNumber)}
-            style={currentPage === pageNumber ? { color: 'red' } : {}}
-          >
-            {pageNumber}
-          </button>
-        ))
-      }
-      
-      <button onClick={async () => await onPageChange(currentPage + 1)}>다음</button> */}
-      {/* <p>내가 작성한 공고 : 어떻게 하지 ?</p> */}
-        {/* <p>내가 선호할 만한 사람 : 나랑 동일한 장르 사람 보여주기 ? </p> */}
-        {/* <p>나를 찾는 공고 : 게시글 - 내 포지션과 내 선호장르가 들어있는 글</p> */}
     </MainDiv>
   );
 };

@@ -1,6 +1,6 @@
 // 커뮤니티 게시판 메인
 import React, { useState } from "react";
-import Navbar from "../components/Navbar";
+import Navbar from "../common/Navbar";
 import styled from "styled-components";
 import Sidebar from "../components/Sidebar";
 import { Outlet } from "react-router-dom";

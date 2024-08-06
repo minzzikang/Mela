@@ -1,6 +1,6 @@
 import React from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import DefaultButton from "../components/DefaultButton";
+import Button from "../common/Button";
 import { newPassword } from "../API/UserAPI";
 import styled from "styled-components";
 
@@ -25,10 +25,8 @@ function ChangePassword() {
         setPasswordConfirm(currentPasswordConfirm)
         if (value === currentPasswordConfirm) {
             setIsPasswordConfirm(true)
-            // console.log(isPasswordConfirm)
         } else {
             setIsPasswordConfirm(false)
-            // console.log(isPasswordConfirm)
         }
     }
 
@@ -44,7 +42,6 @@ function ChangePassword() {
         if (isPasswordConfirm) {
             try {
                 const response = await newPassword({ password: value, token })
-                // console.log(response)
                 alert('비밀번호가 변경되었습니다. 다시 로그인해주세요.')
                 navigate('/')
             } catch (err) {
@@ -84,7 +81,7 @@ function ChangePassword() {
                     )}
             </div>
             <div className="buttonWrapper">
-                <DefaultButton 
+                <Button 
                     text='변경하기'
                     onClick={handleSubmit}
                     width='5rem'

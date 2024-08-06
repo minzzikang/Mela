@@ -1,6 +1,6 @@
 import DefaultFileShape from "../components/DefaultFolderShape";
 import TeamspaceCreateModal from "../components/Modals/TeamspaceCreate";
-import Navbar from "../components/Navbar";
+import Navbar from "../common/Navbar";
 import Sidebar from "../components/Sidebar";
 import styled from "styled-components";
 import { Outlet, useNavigate } from "react-router-dom";

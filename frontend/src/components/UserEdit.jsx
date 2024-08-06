@@ -1,8 +1,8 @@
-import React, { useRef, useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import DefaultButton from "../components/DefaultButton";
+import Button from "../common/Button";
 import styled from "styled-components";
-import { fetchUser, followUser } from "../API/UserAPI";
+import { followUser } from "../API/UserAPI";
 import defaultprofile from "../assets/images/default-profile.png";
 import { getImg } from "../API/FileAPI";
 import { isFollow } from "../API/UserAPI";
@@ -19,9 +19,6 @@ function UserEdit(props) {
   const [loginUser, setLoginUser] = useState("");
   const [loginUserPortfolio, setLoginUserPortfolio] = useState("");
   const [imgURL, setImgURL] = useState("");
-  // const currentUser = props.currentUser
-  // const loginUser = props.loginUser
-
   const navigate = useNavigate();
 
   const goUpdate = () => {
@@ -80,17 +77,11 @@ function UserEdit(props) {
         const response = await isFollow(currentUser.emailId);
         setIsFollowed(response);
       } catch (err) {
-        // console.log(currentUser)
-        // console.log(err)
       }
     };
 
     followInfo();
   }, [currentUser, currentUserPortfolio]);
-  // console.log(currentUser)
-  // console.log(currentUserPortfolio)
-  // console.log(loginUser)
-  // console.log(loginUserPortfolio)
 
   const handleFollow = async () => {
     if (loginUser && currentUser && loginUser.emailId !== currentUser.emailId) {
@@ -162,7 +153,7 @@ function UserEdit(props) {
                     <p>{loginUserPortfolio.selfIntro}</p>
                   </div>
                 </div>
-                <DefaultButton
+                <Button
                   text={"Edit"}
                   backgroundcolor={"#6C7383"}
                   fontcolor={"white"}
@@ -231,7 +222,7 @@ function UserEdit(props) {
                 </div>
               </div>
               <div className="buttons">
-                <DefaultButton
+                <Button
                   text={"채팅하기"}
                   backgroundcolor={"#873ffa"}
                   width={"5rem"}
@@ -239,7 +230,7 @@ function UserEdit(props) {
                   onClick={handleChat}
                 />
                 <br />
-                <DefaultButton
+                <Button
                   fontcolor={"white"}
                   text={isFollowed ? "Unfollow" : "Follow"}
                   backgroundcolor={isFollowed ? "#6C7383" : "#254ef8"}

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import { notification, checkNotification, delNotification } from '../../API/UserAPI'
 import moment from 'moment'
-import DefaultButton from '../DefaultButton'
+import Button from '../../common/Button'
 
 
 function AlarmUnread () {
@@ -147,7 +147,7 @@ function AlarmUnread () {
         </Container>
         <div className='footer'>
             <div className='btnWrapper'>
-                <DefaultButton
+                <Button
                     text='Delete'
                     backgroundcolor='#C02525'
                     width='4rem'

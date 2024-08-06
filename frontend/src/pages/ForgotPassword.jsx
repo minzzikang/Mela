@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { changePassword } from "../API/AuthAPI";
-import DefaultButton from "../components/DefaultButton";
+import Button from "../common/Button";
 import styled from "styled-components";
 
 function ForgotPassword() {
@@ -30,7 +30,7 @@ function ForgotPassword() {
                     className='input'
                 />
                 <div className="div">
-                    <DefaultButton 
+                    <Button 
                         text="인증 보내기"
                         onClick={sendEmail}
                         width='8rem'

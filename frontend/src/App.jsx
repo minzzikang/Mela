@@ -1,8 +1,16 @@
 import "./App.scss";
 import { Fragment } from "react";
-import { BrowserRouter, Routes, Route, Link, HashRouter, useNavigate, Navigate  } from "react-router-dom";
-import Navbar from "./components/Navbar";
-import Landing from "./pages/Landing";
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+  Link,
+  HashRouter,
+  useNavigate,
+  Navigate,
+} from "react-router-dom";
+import Navbar from "./common/Navbar";
+import Homepage from "./pages/home/Homepage";
 import GlobalStyle from "./styles/GlobalStyle";
 import styled, { ThemeProvider } from "styled-components";
 import { theme } from "./styles/theme";
@@ -21,38 +29,48 @@ import GatherDetail from "./components/gather/GatherDetail";
 import GatherEdit from "./components/gather/GatherEdit";
 import ChangePassword from "./pages/ChangePassword";
 import Video from "./Video/Video";
-import TotalSearch from './pages/TotalSearch'
+import TotalSearch from "./pages/TotalSearch";
 import Gather from "./pages/Gather";
 
 function App() {
-
-  const lgd = localStorage.getItem('accessToken')? true : false;
+  const lgd = localStorage.getItem("accessToken") ? true : false;
 
   return (
     <>
-
       <GlobalStyle />
       <ThemeProvider theme={theme}>
-      <Scroll>
-        
+        <Scroll>
           <BrowserRouter>
             <Routes>
-            <Route path='/Home' element={<Landing />} />
-              <Route path="/" element={<Landing />} />
+              <Route path="/Home" element={<Homepage />} />
+              <Route path="/" element={<Homepage />} />
               <Route path="/teamspace" element={<TeamspaceMain />} />
               <Route path="/search/:word" element={<TotalSearch />} />
               <Route path="/signup/:emailId" element={<EmailVerify />} />
-              <Route path="/maingather" element={<Gather/>} />
+              <Route path="/maingather" element={<Gather />} />
               <Route path="/gather" element={<Boards />}>
                 <Route index element={<GatherHome />} />
-                {lgd?<Route path="edit/:gatherIdx" element={<GatherEdit />} /> : null}
-                {lgd?<Route path=":pageNumber" element={<GatherHome />} />: null}
-                {lgd?<Route path="create" element={<GatherCreate />} />: null}
-                {lgd?<Route path="detail/:gatherIdx" element={<GatherDetail />} />: null}
+                {lgd ? (
+                  <Route path="edit/:gatherIdx" element={<GatherEdit />} />
+                ) : null}
+                {lgd ? (
+                  <Route path=":pageNumber" element={<GatherHome />} />
+                ) : null}
+                {lgd ? (
+                  <Route path="create" element={<GatherCreate />} />
+                ) : null}
+                {lgd ? (
+                  <Route path="detail/:gatherIdx" element={<GatherDetail />} />
+                ) : null}
               </Route>
               <Route path="/community" element={<Boards />}>
                 <Route path="/community" exact element={<CommunityHome />} />
-                {lgd?<Route path="/community/create" element={<CommunityCreate />} />: null}
+                {lgd ? (
+                  <Route
+                    path="/community/create"
+                    element={<CommunityCreate />}
+                  />
+                ) : null}
                 <Route
                   path="/community/:boardIdx"
                   element={<CommunityDetail />}
@@ -62,7 +80,9 @@ function App() {
                   element={<CommunityEdit />}
                 />
               </Route>
-              {lgd?<Route path='/changepassword' element={<ChangePassword />}/>:null}
+              {lgd ? (
+                <Route path="/changepassword" element={<ChangePassword />} />
+              ) : null}
               <Route
                 path="*"
                 element={
@@ -78,16 +98,14 @@ function App() {
                 }
               />
             </Routes>
-
           </BrowserRouter>
-      </Scroll>
+        </Scroll>
       </ThemeProvider>
     </>
   );
 }
 
 export default App;
-
 
 const StyledAppRouter = styled(AppRouter)`
   /* background-color: blue; */
@@ -96,9 +114,7 @@ const StyledAppRouter = styled(AppRouter)`
   width: 100%;
 `;
 
-const Scroll = styled.div`
-  
-`
+const Scroll = styled.div``;
 const Body = styled.div`
   padding-top: 2.5%;
   display: flex;
@@ -108,8 +124,6 @@ const Body = styled.div`
   height: 100%;
   /* height: 90rem; */
   /* min-height: 80vh; */
-
-
 
   .BodyRouter {
     // 컴포 이하
@@ -127,7 +141,7 @@ const Body = styled.div`
     padding-top: 1.5%;
     /* max-width: 300px; */
     text-align: center;
-    padding-left:0.5%;
+    padding-left: 0.5%;
     margin-left: 1rem;
     height: 60%;
     /* background-color: #202c44; */
