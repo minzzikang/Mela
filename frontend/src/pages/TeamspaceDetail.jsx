@@ -5,7 +5,7 @@ import TeamspaceTeam from "../components/teamspace/TeamspaceTeam"
 import TeamspaceAudio from "../components/teamspace/TeamspaceAudio"
 import TeamspaceFile from "../components/teamspace/TeamspaceFile"
 import TeamspaceManage from "../components/teamspace/TeamspaceManage"
-import TeamspaceInviteModal from '../components/Modals/TeamspaceInviteModal'
+import TeamspaceInviteModal from '../components/modals/TeamspaceInviteModal'
 import CalendarBar from '../components/teamspace/calendar/CalendarBar'
 
 function TeamspaceDetail () {

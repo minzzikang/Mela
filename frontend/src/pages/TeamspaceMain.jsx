@@ -1,5 +1,5 @@
 import DefaultFileShape from "../components/DefaultFolderShape";
-import TeamspaceCreateModal from "../components/Modals/TeamspaceCreate";
+import TeamspaceCreateModal from "../components/modals/TeamspaceCreate";
 import Navbar from "../common/Navbar";
 import Sidebar from "../components/Sidebar";
 import styled from "styled-components";

@@ -39,14 +39,3 @@ export const LandingImage = styled.div`
     gap: 3rem;
   }
 `;
-
-// export const SignUp = styled(SignupModal)`
-//   margin: 2rem;
-//   font-size: 1.5rem;
-//   padding: 12px 24px;
-// `;
-
-// export const SignIn = styled(SigninModal)`
-//   font-size: 1.5rem;
-//   padding: 12px 24px;
-// `;

@@ -1,14 +1,4 @@
-import "./App.scss";
-import { Fragment } from "react";
-import {
-  BrowserRouter,
-  Routes,
-  Route,
-  Link,
-  HashRouter,
-  useNavigate,
-  Navigate,
-} from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Navbar from "./common/Navbar";
 import Homepage from "./pages/home/Homepage";
 import GlobalStyle from "./styles/GlobalStyle";
@@ -28,9 +18,9 @@ import GatherCreate from "./components/gather/GatherCreate";
 import GatherDetail from "./components/gather/GatherDetail";
 import GatherEdit from "./components/gather/GatherEdit";
 import ChangePassword from "./pages/ChangePassword";
-import Video from "./Video/Video";
 import TotalSearch from "./pages/TotalSearch";
 import Gather from "./pages/Gather";
+
 
 function App() {
   const lgd = localStorage.getItem("accessToken") ? true : false;
@@ -108,8 +98,6 @@ function App() {
 export default App;
 
 const StyledAppRouter = styled(AppRouter)`
-  /* background-color: blue; */
-  /* color: blue; */
   min-height: 100%;
   width: 100%;
 `;
@@ -122,29 +110,22 @@ const Body = styled.div`
 
   background-color: #10141d;
   height: 100%;
-  /* height: 90rem; */
-  /* min-height: 80vh; */
 
   .BodyRouter {
     // 컴포 이하
-    /* width: 90%; */
     background-color: #10141d;
     padding-left: 10px;
-    /* padding-top: 2%; */
     height: 100%;
     min-height: 90vh;
   }
   .Side {
     // 사이드 L 바
     width: 12.5vw;
-    /* min-width: 80px; */
     padding-top: 1.5%;
-    /* max-width: 300px; */
     text-align: center;
     padding-left: 0.5%;
     margin-left: 1rem;
     height: 60%;
-    /* background-color: #202c44; */
     border-radius: 10px;
   }
 `;

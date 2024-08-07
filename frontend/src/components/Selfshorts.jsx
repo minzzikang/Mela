@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import ShortsUploadModal from "./Modals/ShortsUpload";
+import ShortsUploadModal from "./modals/ShortsUpload";
 
 function Selfshorts(props) {
     const shorts = props.currentUserShorts

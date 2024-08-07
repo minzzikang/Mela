@@ -5,8 +5,7 @@ import FolderNoImage from "../../../components/FolderNoImage";
 import Button from "../../../common/Button";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
-import * as h from './HomeGather.styled'
-
+import * as h from "./HomeGather.styled";
 
 function Index() {
   const Navi = useNavigate();
@@ -57,8 +56,8 @@ function Index() {
       <div className="buttonholder">
         <Button
           text="More"
-          width="7vw"
-          height="3vh"
+          width="6vw"
+          height="5vh"
           onClick={(event) => Navi("/gather")}
         />
       </div>

@@ -11,15 +11,13 @@ import MicOffRoundedIcon from '@mui/icons-material/MicOffRounded';
 import VideocamOffRoundedIcon from '@mui/icons-material/VideocamOffRounded';
 import VideocamRoundedIcon from '@mui/icons-material/VideocamRounded';
 import ExitToAppIcon from '@mui/icons-material/ExitToApp';
-
-
 import {
   createViduSession,
   GetSessionId,
   DeleteViduSession,
 } from "../API/TeamspaceAPI";
 import { fetchUser } from "../API/UserAPI";
-import ScheduleAllModal from "./../components/Modals/ScheduleAll";
+import ScheduleAllModal from "./../components/modals/ScheduleAll";
 
 // const APPLICATION_SERVER_URL =
 //   process.env.NODE_ENV === "production" ? "" : "https://demos.openvidu.io/";

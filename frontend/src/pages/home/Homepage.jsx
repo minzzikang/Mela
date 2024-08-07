@@ -3,12 +3,15 @@ import HomeMatching from "../../components/home/HomeMatching";
 import HomeGather from "../../components/home/HomeGather";
 import HomeCommunity from "../../components/home/HomeCommunity";
 import Navbar from "../../common/Navbar";
-// import SignupModal from "../components/Modals/SignupModal";
-// import SigninModal from "../components/Modals/SigninModal";
+import Button from "../../common/Button";
+import Signin from "../../components/modals/signin";
+import Signup from "../../components/modals/signup";
 import { useEffect, useState } from "react";
 
 function Homepage() {
   const [logined, setLogined] = useState(false);
+  const [IsSigninModalOpen, setIsSigninModalOpen] = useState(false);
+  const [IsSignupModalOpen, setIsSignupModalOpen] = useState(false);
 
   useEffect(() => {
     if (localStorage.accessToken) {
@@ -29,8 +32,18 @@ function Homepage() {
               <h1>P O R T F O L I O</h1>
             </div>
             <div>
-              {/* <SignUp />
-              <SignIn /> */}
+              <Button
+                text="SIGN UP"
+                width="7vw"
+                height="7vh"
+                onClick={() => setIsSignupModalOpen(true)}
+              />
+              <Button
+                text="SIGN IN"
+                width="7vw"
+                height="7vh"
+                onClick={() => setIsSigninModalOpen(true)}
+              />
             </div>
           </h.LandingImage>
         )}
@@ -39,6 +52,12 @@ function Homepage() {
           <HomeGather />
           <HomeCommunity />
         </div>
+        {IsSigninModalOpen && (
+          <Signin onClose={() => setIsSigninModalOpen(false)} />
+        )}
+        {IsSignupModalOpen && (
+          <Signup onClose={() => setIsSignupModalOpen(false)} />
+        )}
       </h.Container>
     </>
   );

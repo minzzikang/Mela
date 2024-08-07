@@ -3,11 +3,10 @@ import {
   BrowserRouter as Router,
   Route,
   Routes,
-  Navigate,
 } from "react-router-dom";
 import Portfolio from "../pages/Portfolio";
-import SigninModal from "../components/Modals/SigninModal";
-import SignupModal from "../components/Modals/SignupModal";
+import SigninModal from "../components/modals/signin";
+import SignupModal from "../components/modals/signup";
 import Gather from "../pages/Gather";
 import UserUpdate from "../pages/UserUpdate";
 import PortfolioAll from "../pages/PortfolioAll";

@@ -25,7 +25,7 @@ function Index({ backcolour }) {
       <n.Container $backcolour={backcolour}>
         <img src={logo} alt="" onClick={LogoClick} />
         <n.SearchBar onSubmit={submitHandler}>
-          <img src={Search} />
+          <img src={Search} alt='search'/>
           <input
             id="search"
             type="text"

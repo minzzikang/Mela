@@ -5,9 +5,9 @@ import moment from 'moment'
 import styled from "styled-components"
 import { ScheduleList } from "../../../API/ScheduleAPI"
 import { useParams } from "react-router-dom"
-import ScheduleCreateModal from "../../Modals/ScheduleCreate"
+import ScheduleCreateModal from "../../modals/ScheduleCreate"
 import CalendarBox from "../calendar/CalendarBox"
-import ScheduleAll from '../../Modals/ScheduleAll'
+import ScheduleAll from '../../modals/ScheduleAll'
 
 
 function CalendarBar () {

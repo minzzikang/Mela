@@ -49,8 +49,8 @@ function Index() {
       <div className="buttonholder">
         <Button
           text="More"
-          width="7vw"
-          height="3vh"
+          width="6vw"
+          height="5vh"
           onClick={(event) => Navi("/community")}
         />
       </div>
