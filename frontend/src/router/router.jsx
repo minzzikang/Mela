@@ -4,23 +4,23 @@ import {
   Route,
   Routes,
 } from "react-router-dom";
-import Portfolio from "../pages/Portfolio";
-import SigninModal from "../components/modals/signin";
-import SignupModal from "../components/modals/signup";
-import Gather from "../pages/Gather";
-import UserUpdate from "../pages/UserUpdate";
-import PortfolioAll from "../pages/PortfolioAll";
-import Message from "../pages/Message";
-import TeamspaceTeam from "../components/teamspace/TeamspaceTeam";
-import TeamspaceAudio from "../components/teamspace/TeamspaceAudio";
-import TeamspaceFile from "../components/teamspace/TeamspaceFile";
-import TeamspaceManage from "../components/teamspace/TeamspaceManage";
-import TeamspaceDetail from "../pages/TeamspaceDetail";
-import ForgotPassword from "../pages/ForgotPassword";
-import AlarmMain from "../pages/AlarmMain";
-import SequenceMain from "./../sequence/SequenceMain";
-import Video from "../Video/Video";
-import Matching from "../pages/Matching";
+import Portfolio from "pages/Portfolio";
+import SigninModal from "components/modals/signinModal";
+import SignupModal from "components/modals/signupModal";
+import Gather from "pages/Gather";
+import UserUpdate from "pages/UserUpdate";
+import PortfolioAll from "pages/PortfolioAll";
+import Message from "pages/Message";
+import TeamspaceTeam from "components/teamspace/TeamspaceTeam";
+import TeamspaceAudio from "components/teamspace/TeamspaceAudio";
+import TeamspaceFile from "components/teamspace/TeamspaceFile";
+import TeamspaceManage from "components/teamspace/TeamspaceManage";
+import TeamspaceDetail from "pages/teamspace/TeamspaceDetailPage";
+import ForgotPassword from "pages/ForgotPassword";
+import AlarmMain from "pages/AlarmMain";
+import SequenceMain from "sequence/SequenceMain";
+import Video from "Video/Video";
+import Matching from "pages/Matching";
 import { useNavigate } from "react-router-dom";
 
 function AppRouter({ className }) {

@@ -1,25 +1,25 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Navbar from "./common/Navbar";
-import Homepage from "./pages/home/Homepage";
-import GlobalStyle from "./styles/GlobalStyle";
+import Navbar from "common/Navbar";
+import Homepage from "pages/home/Homepage";
+import GlobalStyle from "styles/GlobalStyle";
 import styled, { ThemeProvider } from "styled-components";
-import { theme } from "./styles/theme";
-import AppRouter from "./router/router";
-import Sidebar from "./components/Sidebar";
-import Boards from "./pages/Boards";
-import CommunityCreate from "./components/community/CommunityCreate";
-import CommunityDetail from "./components/community/CommunityDetail";
-import CommunityHome from "./components/community/CommunityHome";
-import CommunityEdit from "./components/community/CommunityEdit";
-import TeamspaceMain from "./pages/TeamspaceMain";
-import EmailVerify from "./pages/EmailVerify";
-import GatherHome from "./components/gather/GatherHome";
-import GatherCreate from "./components/gather/GatherCreate";
-import GatherDetail from "./components/gather/GatherDetail";
-import GatherEdit from "./components/gather/GatherEdit";
-import ChangePassword from "./pages/ChangePassword";
-import TotalSearch from "./pages/TotalSearch";
-import Gather from "./pages/Gather";
+import { theme } from "styles/theme";
+import AppRouter from "router/router";
+import Sidebar from "components/Sidebar";
+import Boards from "pages/Boards";
+import CommunityCreate from "components/community/CommunityCreate";
+import CommunityDetail from "components/community/CommunityDetail";
+import CommunityHome from "components/community/CommunityHome";
+import CommunityEdit from "components/community/CommunityEdit";
+import TeamspaceMain from "pages/teamspace/TeamspaceMainPage";
+import EmailVerify from "pages/EmailVerify";
+import GatherHome from "components/gather/GatherHome";
+import GatherCreate from "components/gather/GatherCreate";
+import GatherDetail from "components/gather/GatherDetail";
+import GatherEdit from "components/gather/GatherEdit";
+import ChangePassword from "pages/ChangePassword";
+import TotalSearch from "pages/TotalSearch";
+import Gather from "pages/Gather";
 
 
 function App() {

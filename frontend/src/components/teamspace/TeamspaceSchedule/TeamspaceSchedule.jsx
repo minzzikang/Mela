@@ -7,11 +7,10 @@ import { ScheduleList } from "../../../API/ScheduleAPI"
 import { useParams } from "react-router-dom"
 
 
-function CalendarBox () {
+function TeamspaceSchedule() {
     const { teamspaceIdx } = useParams()
     const [date, setDate] = useState(new Date())
     const [marks, setMarks] = useState([])
-  
     const handleDateChange = (newDate) => {
         setDate(newDate)
     }
@@ -22,7 +21,6 @@ function CalendarBox () {
           const dateInfo = await ScheduleList(teamspaceIdx)
           const eventDates = dateInfo.map(e => moment(e.startTime).format('MM/DD'))
           setMarks(eventDates)
-          // console.log(eventDates)
         } catch (err) {
         }
       }
@@ -53,8 +51,7 @@ function CalendarBox () {
     )
 }
 
-export default CalendarBox
-
+export default TeamspaceSchedule
 const StyledDot = styled.div`
     background-color: #76ff91;
     width: 0.5rem;

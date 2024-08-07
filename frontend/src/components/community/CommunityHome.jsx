@@ -1,14 +1,14 @@
 import styled from "styled-components";
-import { FaSearch } from "react-icons/fa";
+import Search from "../../assets/icons/search.png";
+import LeftArrow from "../../assets/icons/leftArrow.png";
+import RightArrow from "../../assets/icons/rightArrow.png";
 import React, { useState, useEffect } from "react";
 import { BoardList } from "../../API/BoardAPI";
 import { useNavigate, Link } from "react-router-dom";
 import CoSigninModal from "./CoSigninModal";
 import useStore from "../../status/store";
 import Button from "../../common/Button";
-import { GoDotFill } from "react-icons/go";
 import moment from "moment";
-import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 
 
 function CommunityHome() {
@@ -17,7 +17,6 @@ function CommunityHome() {
   const [data, setData] = useState(null);
   const [boardInput, setBoardInput] = useState("");
   const movePage = useNavigate();
-  const [open, setOpen] = useState(false);
   const [showLoginModal, setShowLoginModal] = useState(false);
   const [totalPageCount, setTotalPageCount] = useState(1);
   const [likeCount, setLikeCount] = useState();
@@ -25,14 +24,12 @@ function CommunityHome() {
   useEffect(() => {
     const fetchData = async () => {
       const response = await BoardList({ page: currentPage, size: 10 });
-      // console.log(response, 'fetch log')
       setData(response.data.boardResList);
       setTotalPageCount(response.data.totalPageCount);
       setLikeCount(response.data.likeNum);
       // 패칭한 데이터를 상태에 저장
     };
     fetchData();
-    // console.log(data, "리스트 조회 완료");
   }, [currentPage]);
 
   const NextPage = () => {
@@ -85,7 +82,6 @@ function CommunityHome() {
       movePage("/community/create");
     } else {
       setShowLoginModal(true);
-      setOpen(true);
     }
   };
 
@@ -132,7 +128,7 @@ function CommunityHome() {
           <h1 onClick={BoardClickHandler}>자유게시판</h1>
           <div className="BoardSearch">
             <span className="SearchContainer">
-              <FaSearch />
+              <img src={Search} alt="search" />
               <form onSubmit={SortByKey}>
                 <input
                   type="text"
@@ -149,7 +145,14 @@ function CommunityHome() {
                   sortType === "latest" ? "active-sort" : ""
                 }`}
               >
-                <GoDotFill />
+                <div
+                  style={{
+                    borderRadius: "50%",
+                    width: "10px",
+                    height: "10px",
+                    backgroundColor: "gray",
+                  }}
+                ></div>
                 최신순
               </button>
               <button
@@ -158,7 +161,14 @@ function CommunityHome() {
                   sortType === "view" ? "active-sort" : ""
                 }`}
               >
-                <GoDotFill />
+                <div
+                  style={{
+                    borderRadius: "50%",
+                    width: "10px",
+                    height: "10px",
+                    backgroundColor: "gray",
+                  }}
+                ></div>
                 조회수순
               </button>
               <button
@@ -167,7 +177,14 @@ function CommunityHome() {
                   sortType === "like" ? "active-sort" : ""
                 }`}
               >
-                <GoDotFill />
+                <div
+                  style={{
+                    borderRadius: "50%",
+                    width: "10px",
+                    height: "10px",
+                    backgroundColor: "gray",
+                  }}
+                ></div>
                 인기순
               </button>
             </div>
@@ -213,12 +230,7 @@ function CommunityHome() {
           </div>
           <br />
           <div className="buttonWrapper">
-            <Button
-              onClick={Create}
-              text="글쓰기"
-              width="4rem"
-              height="2rem"
-            />
+            <Button onClick={Create} text="글쓰기" width="4rem" height="2rem" />
           </div>
         </div>
         <div className="footer">
@@ -227,15 +239,17 @@ function CommunityHome() {
             onClick={PrevPage}
             disabled={currentPage === 1}
           >
-            <IoIosArrowBack />
+            <img src={LeftArrow} alt="back" />
           </div>
           <div className="pagination">{pages}</div>
           <div className="page-btn" onClick={NextPage}>
-            <IoIosArrowForward />
+            <img src={RightArrow} alt="forward" />
           </div>
         </div>
       </MainDiv>
-      {showLoginModal && <CoSigninModal open={open} setOpen={setOpen} />}
+      {showLoginModal && (
+        <CoSigninModal onClose={() => setShowLoginModal(false)} />
+      )}
     </>
   );
 }

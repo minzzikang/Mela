@@ -1,14 +1,14 @@
 //포트폴리오 페이지
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import useStore from "../status/store";
-import UserEdit from "../components/UserEdit";
-import Selfshorts from "../components/Selfshorts";
-import PortfolioPin from "../components/PortfolioPin";
-import { othersInfo } from "../API/UserAPI";
-import Alarmbar from "../components/alarm/Alarmbar";
+import useStore from "status/store";
+import UserEdit from "components/UserEdit";
+import Selfshorts from "components/Selfshorts";
+import PortfolioPin from "components/PortfolioPin";
+import { othersInfo } from "API/UserAPI";
+import Alarmbar from "components/alarm/Alarmbar";
 import styled from "styled-components";
-import Feed from "../components/Feed";
+import Feed from "components/Feed";
 
 
 function Portfolio() {
@@ -35,9 +35,7 @@ function Portfolio() {
         setCurrentUserShorts(otherInfo[3]);
         setCurrentUserPosition(otherInfo[4]);
         setCurrentUserGenre(otherInfo[5]);
-        // console.log(otherInfo)
       } catch (err) {
-        // console.log(err);
       }
     };
     info();

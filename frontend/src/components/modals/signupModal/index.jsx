@@ -1,13 +1,14 @@
 import * as s from "./Signup.styled";
-import { emailCheck } from "../../../API/UserAPI";
-import { signup, checkDupNickname } from "../../../API/AuthAPI";
+import { emailCheck } from "API/UserAPI";
+import { signup, checkDupNickname } from "API/AuthAPI";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
-import Button from "../../../common/Button";
-import BackBtn from "../../../assets/icons/backBtn.png";
+import Button from "common/Button";
+import BackBtn from "assets/icons/backBtn.png";
 import moment from "moment";
 import "react-datepicker/dist/react-datepicker.css";
 import { ko } from "date-fns/locale";
+
 
 function Index({ onClose }) {
   const navigate = useNavigate();
@@ -241,7 +242,7 @@ function Index({ onClose }) {
           />
         </form>
         <s.Backdrop onClick={onClose}>
-          <img src={BackBtn} alt="back button" />
+          <img src={BackBtn} alt="back-button" />
         </s.Backdrop>
       </s.Wrap>
     </s.Container>

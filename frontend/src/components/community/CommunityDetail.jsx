@@ -9,7 +9,6 @@ import {
 } from "../../API/BoardAPI";
 import styled from "styled-components";
 import { useEffect, useState } from "react";
-import useStore from "../../status/store";
 import { checkBoardLike } from "./../../API/BoardAPI";
 import { GoHeart, GoHeartFill, GoBell } from "react-icons/go";
 import { FaRegClock } from "react-icons/fa6";
@@ -17,6 +16,7 @@ import { FaTrashAlt } from "react-icons/fa";
 import { MdEdit } from "react-icons/md";
 import { LuEye } from "react-icons/lu";
 import { IoMdArrowRoundBack } from "react-icons/io";
+
 
 function CommunityDetail() {
   const [data, setData] = useState(null);
