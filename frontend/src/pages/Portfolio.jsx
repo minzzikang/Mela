@@ -4,12 +4,11 @@ import { useParams, useNavigate } from "react-router-dom";
 import useStore from "status/store";
 import UserEdit from "components/UserEdit";
 import Selfshorts from "components/Selfshorts";
-import PortfolioPin from "components/PortfolioPin";
+import PortfolioPin from "components/portfolio/PortfolioPin";
 import { othersInfo } from "API/UserAPI";
 import Alarmbar from "components/alarm/Alarmbar";
 import styled from "styled-components";
 import Feed from "components/Feed";
-
 
 function Portfolio() {
   const Navigate = useNavigate();
@@ -35,8 +34,7 @@ function Portfolio() {
         setCurrentUserShorts(otherInfo[3]);
         setCurrentUserPosition(otherInfo[4]);
         setCurrentUserGenre(otherInfo[5]);
-      } catch (err) {
-      }
+      } catch (err) {}
     };
     info();
   }, [emailId]);
@@ -52,7 +50,6 @@ function Portfolio() {
     loginPortfolio: userPortfolio,
   };
 
-
   return (
     <>
       {user ? (
@@ -60,7 +57,7 @@ function Portfolio() {
           <Container>
             <div className="main">
               <UserEdit {...userProps} />
-              <Selfshorts {...userProps}/>
+              <Selfshorts {...userProps} />
               <PortfolioPin />
             </div>
             <div className="side">

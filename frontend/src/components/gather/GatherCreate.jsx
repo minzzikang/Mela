@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import useStore from "../../status/store";
+import useStore from "status/store";
 import styled from "styled-components";
-import { GatherPost } from "../../API/GatherAPI";
+import { GatherPost } from "API/GatherAPI";
 import GatherCal from "./GatherCal";
-import { IoMdArrowRoundBack } from "react-icons/io";
+import BackArrow from "assets/icons/BackArrow.png";
 
 function GatherCreate() {
   const genres = [
@@ -26,7 +26,6 @@ function GatherCreate() {
   const positions = ["보컬", "작곡", "작사", "세션", "믹싱", "기타"];
   const Navigate = useNavigate();
   const isLogined = useStore((state) => state.islogined);
-  const [showLoginModal, setshowLoginModal] = useState(false);
   const [selectedGenres, setSelectedGenres] = useState([]);
   const [selectedPositions, setSelectedPositions] = useState([]);
   const [userInput, setUserInput] = useState({
@@ -51,9 +50,7 @@ function GatherCreate() {
     } else if (checked && selectedGenres.length >= 3) {
       window.alert("장르는 최대 3개까지만 선택 가능합니다.");
       event.preventDefault();
-      // console.log(selectedGenres);
     }
-    // console.log(selectedGenres);
   };
 
   const handlePositionChange = (event) => {
@@ -73,8 +70,6 @@ function GatherCreate() {
 
   const submitHandler = async (event) => {
     event.preventDefault();
-    // console.log(userInput.endDate, "마감일");
-    // console.log(userInput.title.length, "제목길이");
     if (selectedGenres.length < 1) {
       window.alert("장르를 선택해주세요.");
       return;
@@ -94,11 +89,6 @@ function GatherCreate() {
     if (event.key === "Enter") {
       event.preventDefault();
     }
-    // console.log("제출");
-    // console.log(userInput);
-    // console.log(selectedGenres);
-    // console.log(selectedPositions);
-    // console.log();
     const genreName1 = selectedGenres[0];
     const genreName2 = selectedGenres[1];
     const genreName3 = selectedGenres[2];
@@ -110,20 +100,17 @@ function GatherCreate() {
       genreName3,
       positions,
     };
-    // console.log(data);
     try {
       const response = await GatherPost(data);
-      // console.log(response, "res");
       Navigate(`../detail/${response.data.message}`);
     } catch (error) {
-      // console.error(error);
     }
   };
 
   if (isLogined) {
     return (
       <CreateDiv>
-        <IoMdArrowRoundBack size="30" className="back-btn" onClick={goBack} />
+        <img src={BackArrow} className="back-btn" onClick={goBack} alt='back-btn' />
         <form action="" onSubmit={submitHandler}>
           <div className="header">
             <div className="wrapper">

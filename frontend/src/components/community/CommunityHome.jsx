@@ -1,13 +1,13 @@
 import styled from "styled-components";
-import Search from "../../assets/icons/search.png";
-import LeftArrow from "../../assets/icons/leftArrow.png";
-import RightArrow from "../../assets/icons/rightArrow.png";
-import React, { useState, useEffect } from "react";
-import { BoardList } from "../../API/BoardAPI";
+import Search from "assets/icons/Search.png";
+import LeftArrow from "assets/icons/LeftArrow.png";
+import RightArrow from "assets/icons/RightArrow.png";
+import { useState, useEffect } from "react";
+import { BoardList } from "API/BoardAPI";
 import { useNavigate, Link } from "react-router-dom";
 import CoSigninModal from "./CoSigninModal";
-import useStore from "../../status/store";
-import Button from "../../common/Button";
+import useStore from "status/store";
+import Button from "common/Button";
 import moment from "moment";
 
 

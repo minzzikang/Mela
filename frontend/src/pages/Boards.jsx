@@ -1,23 +1,16 @@
 // 커뮤니티 게시판 메인
-import React, { useState } from "react";
-import Navbar from "../common/Navbar";
+import Navbar from "common/Navbar";
 import styled from "styled-components";
-import Sidebar from "../components/Sidebar";
+import Sidebar from "common/Sidebar/index";
 import { Outlet } from "react-router-dom";
-import Alarmbar from "../components/alarm/Alarmbar";
+import Alarmbar from "components/alarm/Alarmbar";
 
 const Community = () => {
-  //
-  const [isWriting, setIsWriting] = useState(false);
-
-
   return (
     <CommunityContainer>
- 
-        <SideDiv>
-          <Sidebar paddingtop="6vh" />
-        </SideDiv>
-
+      <SideDiv>
+        <Sidebar paddingtop="6vh" />
+      </SideDiv>
       <MainDiv>
         <Navbar backcolour="10" />
         <Outlet />
@@ -34,13 +27,10 @@ export default Community;
 const CommunityContainer = styled.div`
   background-color: ${(props) => props.theme.colours.primary};
   display: flex;
-  /* flex-direction: column; */
-  height: 100% ;
+  height: 100%;
   color: white;
   padding-top: 3%;
   justify-content: space-evenly;
-  /* padding-left: 3%; */
-  
 `;
 
 const SideDiv = styled.div`
@@ -50,7 +40,6 @@ const SideDiv = styled.div`
 
 const MainDiv = styled.div`
   width: 64%;
-  /* height: 600px; */
   height: 100%;
   min-height: 90vh;
   background-color: ${(props) => props.theme.colours.point};
@@ -67,9 +56,9 @@ const MainDiv = styled.div`
   }
   a {
     text-decoration: none;
-    color : rgb(19, 160, 0)
+    color: rgb(19, 160, 0);
   }
-  
+
   .Container {
     margin-top: 5%;
     h1 {

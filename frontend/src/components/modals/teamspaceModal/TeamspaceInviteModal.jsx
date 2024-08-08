@@ -1,12 +1,11 @@
 import { useState, useEffect } from "react";
-import Button from "../../../common/Button";
-import { FaSearch } from "react-icons/fa";
-import { TeamspaceMemberInvite } from "../../../API/TeamspaceAPI";
-import { fetchUser, followingList } from "../../../API/UserAPI";
+import Button from "common/Button";
+import Search from "assets/icons/Search.png";
+import { TeamspaceMemberInvite } from "API/TeamspaceAPI";
+import { fetchUser, followingList } from "API/UserAPI";
 import { useParams } from "react-router-dom";
-import { userSearch } from "../../../API/UserAPI";
+import { userSearch } from "API/UserAPI";
 import * as t from "./TeamspaceInviteModal.styled";
-
 
 function TeamspaceInviteModal() {
   const [open, setOpen] = useState(false);
@@ -101,7 +100,7 @@ function TeamspaceInviteModal() {
         <t.ModalBackdrop onClick={closeModalHandler}>
           <t.InviteContainer>
             <t.SearchBar onSubmit={submitHandler}>
-              <FaSearch className="Icon" />
+              <img src={Search} alt="search" />
               <input
                 id="search"
                 type="text"

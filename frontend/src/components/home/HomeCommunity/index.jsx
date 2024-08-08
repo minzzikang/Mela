@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import Button from "../../../common/Button";
 import RightDouble from "../../../assets/icons/Expand_right_double.svg";
 import LeftDouble from "../../../assets/icons/Expand_left.png";
-import FolderNoImage from "../../../components/FolderNoImage";
+import FolderNoImage from "../../../common/FolderShape/FolderNoImageShape";
 import * as h from "./HomeCommunity.styled";
 
 function Index() {

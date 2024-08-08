@@ -3,13 +3,13 @@ import { OpenVidu } from "openvidu-browser";
 import styled from "styled-components";
 import axios from "axios";
 import UserVideoComponent from "./UserVideoComponent";
-import Mic from "../assets/icons/Mic.png"
-import MicOff from "../assets/icons/MicOff.png"
-import VideoIcon from "../assets/icons/video.png"
-import VideoOff from "../assets/icons/videoOff.png"
-import Exit from "../assets/icons/Exit.png"
-import { createViduSession, GetSessionId } from "../API/TeamspaceAPI";
-import { fetchUser } from "../API/UserAPI";
+import Mic from "assets/icons/Mic.png"
+import MicOff from "assets/icons/MicOff.png"
+import VideoIcon from "assets/icons/Video.png"
+import VideoOff from "assets/icons/VideoOff.png"
+import Exit from "assets/icons/Exit.png"
+import { createViduSession, GetSessionId } from "API/TeamspaceAPI";
+import { fetchUser } from "API/UserAPI";
 
 const APPLICATION_SERVER_URL = "https://demos.openvidu.io/";
 

@@ -1,8 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { useEffect, useState } from "react";
-import { RecruitDetail } from "../../API/GatherAPI";
-import useStore from "../../status/store";
+import { RecruitDetail } from "API/GatherAPI";
 import { useNavigate, useParams } from "react-router-dom";
 import {
   GetComment,
@@ -11,15 +10,17 @@ import {
   CommentDelete,
   checkBoardLike,
   BoardLike,
-} from "../../API/BoardAPI";
-import Button from "../../common/Button";
-import { CreateChat } from "../../API/ChatAPI";
-import { GoHeart, GoHeartFill, GoBell } from "react-icons/go";
-import { FaRegClock } from "react-icons/fa6";
-import { FaTrashAlt } from "react-icons/fa";
-import { MdEdit } from "react-icons/md";
-import { LuEye } from "react-icons/lu";
-import { IoMdArrowRoundBack } from "react-icons/io";
+} from "API/BoardAPI";
+import Button from "common/Button";
+import { CreateChat } from "API/ChatAPI";
+import Alarm from "assets/icons/Bell.png";
+import Heart from "assets/icons/Heart.png";
+import HeartFill from "assets/icons/HeartFill.png";
+import Clock from "assets/icons/Clock.png";
+import Trash from "assets/icons/Trash.png";
+import Edit from "assets/icons/Edit.png";
+import Eye from "assets/icons/Eye.png";
+import BackArrow from "assets/icons/BackArrow.png";
 
 const GatherDetail = () => {
   const [data, setData] = useState(null);
@@ -62,9 +63,7 @@ const GatherDetail = () => {
       await CommentDelete({ boardIdx: boardIndex, commentIdx });
       const response = await GetComment({ boardIdx: boardIndex });
       setComments(response.data);
-    } catch (error) {
-      // console.error("댓글 삭제 중 오류 발생:", error);
-    }
+    } catch (error) {}
   };
 
   const handleSubmit = async (event) => {
@@ -132,12 +131,11 @@ const GatherDetail = () => {
       setRoomIdx(response);
       Navigate(`/message/${response}`);
       setOtheruserid("");
-    } catch (err) {
-    }
+    } catch (err) {}
   };
 
   const goHome = async () => {
-    Navigate('../');
+    Navigate("../");
   };
 
   ////////////
@@ -149,15 +147,16 @@ const GatherDetail = () => {
             <h1>{data.title}</h1>
             <div className="chat-btn">
               {!isAuthor && (
-                <Button
-                  text={"채팅연결"}
-                  width={"6rem"}
-                  onClick={handleChat}
-                />
+                <Button text={"채팅연결"} width={"6rem"} onClick={handleChat} />
               )}
             </div>
           </div>
-          <IoMdArrowRoundBack size="30" className="back-btn" onClick={goHome} />
+          <img
+            src={BackArrow}
+            alt="back-btn"
+            className="back-btn"
+            onClick={goHome}
+          />
         </div>
         <div>
           <div className="profile">
@@ -166,11 +165,11 @@ const GatherDetail = () => {
               <div className="infoContainer">
                 <div className="infoDate">
                   <div className="registdate">
-                    <FaRegClock className="icon" />
+                    <img src={Clock} alt="icon" className="icon" />
                     {data.registDate}
                   </div>
                   <div className="viewCount">
-                    <LuEye className="icon" size="20" />
+                    <img src={Eye} className="icon" alt="icon" />
                     {data.viewNum}
                   </div>
                 </div>
@@ -211,16 +210,13 @@ const GatherDetail = () => {
         <div className="edit-del">
           {isAuthor && (
             <span>
-              <FaTrashAlt onClick={deleteHandler} className="icon" />
+              <img src={Trash} onClick={deleteHandler} alt="del" />
               삭제
             </span>
           )}
           {isAuthor && (
             <span onClick={() => Navigate(`../edit/${gatherIdx}`)}>
-              <MdEdit
-                
-                className="icon"
-              />
+              <img src={Edit} alt="edit" />
               수정
             </span>
           )}
@@ -228,35 +224,35 @@ const GatherDetail = () => {
         <LikeContainer>
           {isLiked ? (
             <span>
-              <GoHeart onClick={BoardLikeHandler} className="icon" />
+              <img src={Heart} onClick={BoardLikeHandler} alt="like" />
             </span>
           ) : (
             <span>
-              <GoHeartFill onClick={BoardLikeHandler} className="icon" />
+              <img src={HeartFill} onClick={BoardLikeHandler} alt="dislike" />
             </span>
           )}
           {likeCount}
         </LikeContainer>
-        
+
         <div className="comment-title">
-          <GoBell className="icon" />
+          <img src={Alarm} alt="icon" />
           <span>댓글</span>
           <div className="comment-count">{comments && comments.length}</div>
         </div>
         <div>
           <hr />
           <form action="" onSubmit={handleSubmit} className="comment">
-          <input
-            type="text"
-            value={userInput}
-            onChange={hanleUserInput}
-            placeholder="댓글을 입력해주세요"
-            className="input"
-          />
-          <button type="submit" className="button">
-            등록
-          </button>
-        </form>
+            <input
+              type="text"
+              value={userInput}
+              onChange={hanleUserInput}
+              placeholder="댓글을 입력해주세요"
+              className="input"
+            />
+            <button type="submit" className="button">
+              등록
+            </button>
+          </form>
         </div>
         <div className="comment-list">
           <ul>
@@ -271,11 +267,13 @@ const GatherDetail = () => {
                       <CommentContainer>
                         <div>{comment.content}</div>
                         {comment.userIdx === currentUserIdx && (
-                        <FaTrashAlt
-                          onClick={() =>
-                            commentDeleteHandler(comment.commentIdx)
-                          }
-                        />
+                          <img
+                            src={Trash}
+                            alt="del"
+                            onClick={() =>
+                              commentDeleteHandler(comment.commentIdx)
+                            }
+                          />
                         )}
                       </CommentContainer>
                       <br />
@@ -289,8 +287,6 @@ const GatherDetail = () => {
             )}
           </ul>
         </div>
-
-
       </DetailMain>
     );
   } else {

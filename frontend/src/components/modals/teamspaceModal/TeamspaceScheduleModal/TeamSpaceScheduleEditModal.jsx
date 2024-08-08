@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { ScheduleUpdate } from "API/ScheduleAPI";
 import moment from "moment";
 import Button from "common/Button";
-import BackBtn from "assets/icons/backBtn.png";
+import BackBtn from "assets/icons/BackBtn.png";
 import * as t from "./TeamspaceScheduleEditModal.styled";
 
 function ScheduleEditModal({

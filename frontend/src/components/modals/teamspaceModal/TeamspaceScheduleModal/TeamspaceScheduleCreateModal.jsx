@@ -1,7 +1,7 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { ScheduleGenerate } from "API/ScheduleAPI";
 import Button from "common/Button";
-import BackBtn from "assets/icons/backBtn.png";
+import BackBtn from "assets/icons/BackBtn.png";
 import * as t from "./TeamspaceScheduleCreateModal.styled";
 
 function ScheduleCreateModal({ teamspaceId, onScheduleCreate, onClose }) {

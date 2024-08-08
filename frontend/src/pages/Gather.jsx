@@ -1,98 +1,96 @@
-import DefaultFileShape from "../components/DefaultFolderShape";
-import Navbar from "../common/Navbar";
-import Sidebar from "../components/Sidebar";
+import Navbar from "common/Navbar";
+import Sidebar from "common/Sidebar/Sidebar";
 import styled from "styled-components";
-import { Outlet, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
-import Alarmbar from "../components/alarm/Alarmbar";
-import { shortsList } from "../API/ShortsAPI";
-import { recommendList } from "../API/GatherAPI";
-import { myGatherList } from "../API/UserAPI";
-import Button from "../common/Button";
+import Alarmbar from "components/alarm/Alarmbar";
+import { shortsList } from "API/ShortsAPI";
+import { recommendList } from "API/GatherAPI";
+import { myGatherList } from "API/UserAPI";
+import Button from "common/Button";
 
 function Gather() {
-  const [recommend, setRecommend] = useState([])
-  const [myGather, setMyGather] = useState([])
-  const [shorts, setShorts] = useState([])
-  const navigate = useNavigate()
+  const [recommend, setRecommend] = useState([]);
+  const [myGather, setMyGather] = useState([]);
+  const [shorts, setShorts] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
-    const gatherInfo = async() => {     
-        try {
-          const recommendInfo = await recommendList({
-            page: 1,
-            size: 10,
-            word: "",
-            sortKey: "viewNum"
-          });
-          setRecommend(recommendInfo.boardRecruitRes)
-          const myGatherInfo = await myGatherList({
-            page: 1,
-            size: 10,
-          });
-          setMyGather(myGatherInfo.boardRecruitRes)
-          const shortsInfo = await shortsList()
-          setShorts(shortsInfo)
-        } catch (err) {
-          console.error(err)
-        }
-      }; 
-      
-      gatherInfo()
-  
-    },[])
-
-    const recommendLimitList = () => {
-      const result = []
-      if (recommend.length > 3) {
-        for (let i = 0; i < 3; i++) {
-          result.push(recommend[i])
-        }
-      } else {
-        for (let i = 0; i < recommend.length; i++) {
-          result.push(recommend[i])
-        }
+    const gatherInfo = async () => {
+      try {
+        const recommendInfo = await recommendList({
+          page: 1,
+          size: 10,
+          word: "",
+          sortKey: "viewNum",
+        });
+        setRecommend(recommendInfo.boardRecruitRes);
+        const myGatherInfo = await myGatherList({
+          page: 1,
+          size: 10,
+        });
+        setMyGather(myGatherInfo.boardRecruitRes);
+        const shortsInfo = await shortsList();
+        setShorts(shortsInfo);
+      } catch (err) {
+        console.error(err);
       }
-      return result
-    }
+    };
 
-    const myGatherLimitList = () => {
-      const result = []
-      if (myGather.length > 3) {
-        for (let i = 0; i < 3; i++) {
-          result.push(myGather[i])
-        }
-      } else {
-        for (let i = 0; i < myGather.length; i++) {
-          result.push(myGather[i])
-        }
+    gatherInfo();
+  }, []);
+
+  const recommendLimitList = () => {
+    const result = [];
+    if (recommend.length > 3) {
+      for (let i = 0; i < 3; i++) {
+        result.push(recommend[i]);
       }
-      return result
-    }
-
-    const shortsLimitList = () => {
-      const result = []
-      if (shorts.length > 3) {
-        for (let i = 0; i < 3; i++) {
-          result.push(shorts[i])
-        }
-      } else {
-        for (let i = 0; i < shorts.length; i++) {
-          result.push(shorts[i])
-        }
+    } else {
+      for (let i = 0; i < recommend.length; i++) {
+        result.push(recommend[i]);
       }
-      
-      return result
+    }
+    return result;
+  };
+
+  const myGatherLimitList = () => {
+    const result = [];
+    if (myGather.length > 3) {
+      for (let i = 0; i < 3; i++) {
+        result.push(myGather[i]);
+      }
+    } else {
+      for (let i = 0; i < myGather.length; i++) {
+        result.push(myGather[i]);
+      }
+    }
+    return result;
+  };
+
+  const shortsLimitList = () => {
+    const result = [];
+    if (shorts.length > 3) {
+      for (let i = 0; i < 3; i++) {
+        result.push(shorts[i]);
+      }
+    } else {
+      for (let i = 0; i < shorts.length; i++) {
+        result.push(shorts[i]);
+      }
     }
 
-    const handleCreate = () => {
-      navigate('/gather/create')
-    }
+    return result;
+  };
 
-  return ( 
+  const handleCreate = () => {
+    navigate("/gather/create");
+  };
+
+  return (
     <GatherContainer>
       <SideDiv>
-        <Sidebar paddingtop="6vh"/>
+        <Sidebar paddingtop="6vh" />
       </SideDiv>
       <MainDiv>
         <Navbar backcolour="10" />
@@ -100,84 +98,85 @@ function Gather() {
           <div className="header">
             <h3>내가 작성한 공고</h3>
             <Button
-              text='글쓰기'
-              width='4rem'
-              height='2rem'
+              text="글쓰기"
+              width="4rem"
+              height="2rem"
               onClick={handleCreate}
             />
           </div>
           <ListContainer>
             {myGather.length === 0 ? (
               <>
-              <p>작성한 공고가 없습니다.</p>
+                <p>작성한 공고가 없습니다.</p>
               </>
             ) : (
               <>
-            {Object.entries(myGatherLimitList()).map(([key, value]) => (
-              <ListDiv key={value.boardRecruitIdx} onClick={() => navigate(`/gather/detail/${value.boardRecruitIdx}`)}>
-                <Title> 
-                {value.title} 
-                </Title> 
-                <Content> 
-                {value.content} 
-                </Content> 
-              </ListDiv> 
-            ))} 
-            </>
+                {Object.entries(myGatherLimitList()).map(([key, value]) => (
+                  <ListDiv
+                    key={value.boardRecruitIdx}
+                    onClick={() =>
+                      navigate(`/gather/detail/${value.boardRecruitIdx}`)
+                    }
+                  >
+                    <Title>{value.title}</Title>
+                    <Content>{value.content}</Content>
+                  </ListDiv>
+                ))}
+              </>
             )}
           </ListContainer>
-            <h3>내가 선호할 만한 사람</h3>
+          <h3>내가 선호할 만한 사람</h3>
           <ListContainer>
-          {shorts.length === 0 ? (
+            {shorts.length === 0 ? (
               <>
-              <p>선호할 만한 사람이 없습니다.</p>
+                <p>선호할 만한 사람이 없습니다.</p>
               </>
             ) : (
               <>
-            {Object.entries(shortsLimitList()).map(([key, value]) => (
-              <ShortsDiv 
-              key={value.shortsIdx} 
-              src={value.fileURL} 
-              alt="영상"
-              muted
-              controls>
-              </ShortsDiv>
-            ))}
-            </>
+                {Object.entries(shortsLimitList()).map(([key, value]) => (
+                  <ShortsDiv
+                    key={value.shortsIdx}
+                    src={value.fileURL}
+                    alt="영상"
+                    muted
+                    controls
+                  ></ShortsDiv>
+                ))}
+              </>
             )}
           </ListContainer>
-            <h3>나를 찾는 공고</h3>
+          <h3>나를 찾는 공고</h3>
           <ListContainer>
             {recommend.length === 0 ? (
               <>
-              <p>적합한 공고가 없습니다.</p>
+                <p>적합한 공고가 없습니다.</p>
               </>
             ) : (
               <>
-                  {Object.entries(recommendLimitList()).map(([key, value]) => (
-                  <ListDiv key={value.boardRecruitIdx} onClick={() => navigate(`/gather/detail/${value.boardRecruitIdx}`)}>
-                    <Title>
-                    {value.title}
-                    </Title>
-                    <Content>
-                    {value.content}
-                    </Content>
+                {Object.entries(recommendLimitList()).map(([key, value]) => (
+                  <ListDiv
+                    key={value.boardRecruitIdx}
+                    onClick={() =>
+                      navigate(`/gather/detail/${value.boardRecruitIdx}`)
+                    }
+                  >
+                    <Title>{value.title}</Title>
+                    <Content>{value.content}</Content>
                   </ListDiv>
                 ))}
-                </>
+              </>
             )}
           </ListContainer>
-
         </div>
       </MainDiv>
       <RSideDiv>
-          <Alarmbar />
+        <Alarmbar />
       </RSideDiv>
     </GatherContainer>
-   );
+  );
 }
 
-export default Gather
+export default Gather;
 
 const ListContainer = styled.div`
   display: flex;
@@ -187,7 +186,7 @@ const ListContainer = styled.div`
   gap: 2px 5%;
   padding-top: 3%;
   padding-left: 3%;
-`
+`;
 const GatherContainer = styled.div`
   background-color: ${(props) => props.theme.colours.primary};
   display: flex;
@@ -239,39 +238,53 @@ const RSideDiv = styled.div`
 const ListDiv = styled.div`
   width: 250px;
   height: 200px;
-  background-color: #202C44;
+  background-color: #202c44;
   border-radius: 15%;
   margin-bottom: 5%;
   cursor: pointer;
-`
+`;
 
 const ShortsDiv = styled.video`
   width: 250px;
   height: 280px;
-  background-color: #202C44;
+  background-color: #202c44;
   border-radius: 15%;
   margin-bottom: 5%;
   /* 전체화면 버튼 */
-  &::-webkit-media-controls-fullscreen-button {display: none !important}
+  &::-webkit-media-controls-fullscreen-button {
+    display: none !important;
+  }
 
-/* 일시정지, 재생 버튼 */
-&::-webkit-media-controls-play-button {display: none !important}
+  /* 일시정지, 재생 버튼 */
+  &::-webkit-media-controls-play-button {
+    display: none !important;
+  }
 
-/* 재생 슬라이드..? */
-&::-webkit-media-controls-timeline {display: none !important}
+  /* 재생 슬라이드..? */
+  &::-webkit-media-controls-timeline {
+    display: none !important;
+  }
 
-/* 현재 진행 시간 */
-&::-webkit-media-controls-current-time-display{display: none !important}
+  /* 현재 진행 시간 */
+  &::-webkit-media-controls-current-time-display {
+    display: none !important;
+  }
 
-/* 전체 시간 */
-&::-webkit-media-controls-time-remaining-display {display: none !important}
+  /* 전체 시간 */
+  &::-webkit-media-controls-time-remaining-display {
+    display: none !important;
+  }
 
-/* 음소거 버튼 */
-&::-webkit-media-controls-mute-button {display: none !important}
+  /* 음소거 버튼 */
+  &::-webkit-media-controls-mute-button {
+    display: none !important;
+  }
 
-/* 볼륨 조절 슬라이드 */
-&::-webkit-media-controls-volume-slider {display: none !important}
-`
+  /* 볼륨 조절 슬라이드 */
+  &::-webkit-media-controls-volume-slider {
+    display: none !important;
+  }
+`;
 
 const Title = styled.div`
   color: white;
@@ -286,7 +299,7 @@ const Title = styled.div`
   overflow: hidden;
   text-overflow: ellipsis;
   margin: 0; /* Add this line to remove default margin */
-`
+`;
 
 const Content = styled.div`
   color: white;
@@ -299,4 +312,4 @@ const Content = styled.div`
   overflow: hidden;
   text-overflow: ellipsis;
   margin: 0; /* Add this line to remove default margin */
-`
+`;

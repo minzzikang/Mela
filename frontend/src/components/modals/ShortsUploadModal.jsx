@@ -2,7 +2,7 @@ import { useState } from "react";
 import { shortsUpload } from "API/ShortsAPI";
 import * as s from "./ShortsUploadModal.styled";
 import Button from "common/Button";
-import BackBtn from "assets/icons/backBtn.png";
+import BackBtn from "assets/icons/BackBtn.png";
 
 function ShortsUploadModal({ onClose }) {
   const [values, setValues] = useState({

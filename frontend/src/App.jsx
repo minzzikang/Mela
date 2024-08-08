@@ -5,7 +5,7 @@ import GlobalStyle from "styles/GlobalStyle";
 import styled, { ThemeProvider } from "styled-components";
 import { theme } from "styles/theme";
 import AppRouter from "router/router";
-import Sidebar from "components/Sidebar";
+import Sidebar from "common/Sidebar/Sidebar";
 import Boards from "pages/Boards";
 import CommunityCreate from "components/community/CommunityCreate";
 import CommunityDetail from "components/community/CommunityDetail";
@@ -20,7 +20,6 @@ import GatherEdit from "components/gather/GatherEdit";
 import ChangePassword from "pages/ChangePassword";
 import TotalSearch from "pages/TotalSearch";
 import Gather from "pages/Gather";
-
 
 function App() {
   const lgd = localStorage.getItem("accessToken") ? true : false;

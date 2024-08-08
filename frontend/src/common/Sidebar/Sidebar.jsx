@@ -1,17 +1,18 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { Card, List, ListItem, ListItemPrefix } from "@material-tailwind/react";
-import { FaRegUser } from "react-icons/fa6";
-import { AiOutlineMessage } from "react-icons/ai";
-import { MdOutlineLocalFireDepartment, MdOutlineLogout } from "react-icons/md";
+// import { Card, List, ListItem, ListItemPrefix } from "@material-tailwind/react";/
+import User from "assets/icons/User.png"
+import Message from "assets/icons/Message.png"
+import Logout from "assets/icons/Exit.png"
+import Matching from "assets/icons/Matching.png"
 import styled from "styled-components";
-import useStore from "../status/store";
-import { follower, followerList } from "../API/UserAPI";
-import { followee, followingList } from "../API/UserAPI";
-import { fetchUser } from "../API/UserAPI";
-import { getImg } from "../API/FileAPI";
-import defaultprofile from '../assets/images/default-profile.png'
-import { getShorts } from "../API/ShortsAPI";
+import useStore from "status/store";
+import { follower, followerList } from "API/UserAPI";
+import { followee, followingList } from "API/UserAPI";
+import { fetchUser } from "API/UserAPI";
+import { getImg } from "API/FileAPI";
+import defaultprofile from 'assets/images/default-profile.png'
+import { getShorts } from "API/ShortsAPI";
 
 const SideContainer = styled.div`
   color: white;
@@ -147,11 +148,12 @@ function Sidebar({ className, paddingtop }) {
               <P>팔로잉 {followings.length}</P>
             </div>
           </div>
+          {/*
           <Card className="h-[calc(100vh-2rem)] w-full max-w-[20rem] p-4">
             <List>
               <ListItem className="items">
                 <ListItemPrefix>
-                  <FaRegUser />
+                  <img src={User} alt='user' />
                 </ListItemPrefix>
               <CustomLink to={`/portfolio/${userValues.emailId}`}>
                 <span className="wd">Profile</span>
@@ -159,7 +161,7 @@ function Sidebar({ className, paddingtop }) {
               </ListItem>
               <ListItem className="items">
                 <ListItemPrefix>
-                  <AiOutlineMessage />
+                  <img src={Message} alt='message' />
                 </ListItemPrefix>
                 <CustomLink to='/message'>
                   <span className="wd">Message</span>
@@ -167,7 +169,7 @@ function Sidebar({ className, paddingtop }) {
               </ListItem>
               <ListItem className="items">
                 <ListItemPrefix>
-                  <MdOutlineLocalFireDepartment />
+                  <img src={Matching} alt='matching' />
                 </ListItemPrefix>
                 <CustomLink to={`/matching`}>
                 <span className="wd">Matching</span>
@@ -175,12 +177,12 @@ function Sidebar({ className, paddingtop }) {
               </ListItem>
               <ListItem className="items">
                 <ListItemPrefix>
-                  <MdOutlineLogout />
+                  <img src={Logout} alt='logout' />
                 </ListItemPrefix>
                 <span className="wd" onClick={logout}>Logout</span>
               </ListItem>
             </List>
-          </Card>
+          </Card>*/}
           </>
         ) : <p>유저정보가 없습니다.</p>}
       </SideContainer>

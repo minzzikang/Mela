@@ -1,10 +1,10 @@
 import { ScheduleDelete } from "API/ScheduleAPI";
 import moment from "moment";
-import Trash from "assets/icons/trash.png";
+import Trash from "assets/icons/Trash.png";
 import ScheduleEditModal from "./TeamSpaceScheduleEditModal";
 import { useState } from "react";
 import Button from "common/Button";
-import BackBtn from "assets/icons/backBtn.png";
+import BackBtn from "assets/icons/BackBtn.png";
 import * as t from "./TeamSpaceScheduleMoreModal.styled";
 
 function ScheduleMoreModal({

@@ -64,6 +64,7 @@ export const FormWrap = styled.div`
     padding: 10px 20px;
     cursor: pointer;
     color: gray;
+    flex-grow: 1;
   }
 `;
 

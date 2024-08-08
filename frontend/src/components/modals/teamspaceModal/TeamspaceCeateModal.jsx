@@ -1,9 +1,9 @@
-import { TeamspaceGenerate } from "../../../API/TeamspaceAPI";
+import { TeamspaceGenerate } from "API/TeamspaceAPI";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import * as t from "./TeamspaceCreateModal.styled";
-import Button from "../../../common/Button";
-import BackBtn from "../../../assets/icons/backBtn.png";
+import Button from "common/Button";
+import BackBtn from "assets/icons/BackBtn.png";
 
 function TeamspaceCreateModal({ onClose }) {
   const navigate = useNavigate();
@@ -108,13 +108,13 @@ function TeamspaceCreateModal({ onClose }) {
             <t.Input
               id="teamName"
               type="text"
-              placeholder="팀 스페이스 이름을 입력해주세요. (최대 30자)"
+              placeholder="최대 30자"
               onChange={handleChange}
               required
             />
           </t.FormWrap>
           <t.FormWrap>
-            <input
+            <t.Input
               type="text"
               id="teamDescription"
               onChange={handleChange}

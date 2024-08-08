@@ -1,7 +1,7 @@
-import logo from "../../assets/images/logo.png";
-import Search from "../../assets/icons/search.png";
+import logo from "assets/images/logo.png";
+import Search from "assets/icons/Search.png";
 import * as n from "./Navbar.styled";
-import React, { useState } from "react";
+import { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 
 function Index({ backcolour }) {

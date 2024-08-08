@@ -1,10 +1,10 @@
-import { signin } from "../../../API/AuthAPI";
-import useStore from "../../../status/store";
+import { signin } from "API/AuthAPI";
+import useStore from "status/store";
 import { useNavigate, Link } from "react-router-dom";
 import * as s from "./Signin.styled";
 import { useState } from "react";
-import Button from "../../../common/Button";
-import BackBtn from "../../../assets/icons/backBtn.png";
+import Button from "common/Button";
+import BackBtn from "assets/icons/BackBtn.png";
 
 function Index({ onClose }) {
   const setIsLogined = useStore((state) => state.setIsLogined);

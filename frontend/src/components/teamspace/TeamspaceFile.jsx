@@ -1,14 +1,14 @@
 import { useState, useEffect } from "react";
 import styled from "styled-components";
 import { useParams } from "react-router-dom";
-import Button from "../../common/Button";
-import { IoMdClose } from "react-icons/io";
+import Button from "common/Button";
+import Close from "assets/icons/Close.png";
+import Trash from "assets/icons/Trash.png";
+import FileDown from "assets/icons/FileDown.png";
 import { Dialog, DialogHeader, DialogBody } from "@material-tailwind/react";
-import { Navigate } from "react-router-dom";
-import { uploadTeamspaceFile, TeamspaceFileList } from "../../API/TeamspaceAPI";
-import { downloadFile, deleteFile } from "../../API/FileAPI";
-import { FaFileArrowDown, FaTrash } from "react-icons/fa6";
-import defaultProfile from "../../assets/images/default-profile.png";
+import { uploadTeamspaceFile, TeamspaceFileList } from "API/TeamspaceAPI";
+import { downloadFile, deleteFile } from "API/FileAPI";
+import defaultProfile from "assets/images/default-profile.png";
 
 function TeamspaceFile() {
   const [open, setOpen] = useState(false);
@@ -22,10 +22,8 @@ function TeamspaceFile() {
       try {
         const teamspaceFile = await TeamspaceFileList(teamspaceIdx);
         if ("fileIdx" in Object.values(teamspaceFile)[0]) {
-          // console.log(Object.values(teamspaceFile))
           setValues(teamspaceFile);
         } else {
-          // console.log(Object.values(teamspaceFile))
           setValues("");
         }
       } catch (err) {
@@ -36,7 +34,6 @@ function TeamspaceFile() {
     teamspaceFileList();
   }, []);
 
-  // console.log(values)
   const handleModal = () => {
     setOpen(!open);
   };
@@ -67,10 +64,7 @@ function TeamspaceFile() {
   const handleDeleteFile = async (fileIdx) => {
     try {
       const response = await deleteFile(fileIdx);
-      // console.log(response)
-    } catch (err) {
-      // console.log(err)
-    }
+    } catch (err) {}
   };
 
   const handleUpload = async (e) => {
@@ -90,10 +84,6 @@ function TeamspaceFile() {
     formData.append("filePostReq", body);
     formData.append("file", file);
 
-    // for (let key of formData.keys()) {
-    //     console.log(key, ":", formData.get(key));
-    // }
-
     try {
       await uploadTeamspaceFile({
         formData: formData,
@@ -110,7 +100,6 @@ function TeamspaceFile() {
   return (
     <>
       <CustomBackdrop open={open} onClick={handleModal} />
-      {/* <Container> */}
       <Button
         text={"Upload"}
         backgroundcolor={"#873FFA"}
@@ -158,12 +147,13 @@ function TeamspaceFile() {
                           value.fileIdx
                         }
                         download
-                        // target='_blank'
                         rel="noreferrer"
                       >
-                        <FaFileArrowDown />
+                        <img src={FileDown} alt="fileDown" />
                       </a>
-                      <FaTrash
+                      <img
+                        src={Trash}
+                        alt="del"
                         onClick={() => handleDeleteFile(value.fileIdx)}
                       />
                     </Td>
@@ -176,14 +166,13 @@ function TeamspaceFile() {
           <Div>업로드 된 파일이 없습니다.</Div>
         )}
       </div>
-      {/* </Container> */}
 
       {/* 업로드 모달 */}
       <CustomDialog open={open} handler={handleModal}>
         <CustomHeader>
           <h3>File upload</h3>
           <CloseButton onClick={handleModal}>
-            <IoMdClose size={30} />
+            <img src={Close} alt="close" />
           </CloseButton>
         </CustomHeader>
         <CustomBody>
@@ -221,12 +210,6 @@ function TeamspaceFile() {
 }
 
 export default TeamspaceFile;
-
-const Container = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-`;
 
 const CloseButton = styled.button`
   background: none;

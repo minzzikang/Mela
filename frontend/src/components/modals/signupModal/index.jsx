@@ -4,7 +4,7 @@ import { signup, checkDupNickname } from "API/AuthAPI";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import Button from "common/Button";
-import BackBtn from "assets/icons/backBtn.png";
+import BackBtn from "assets/icons/BackBtn.png";
 import moment from "moment";
 import "react-datepicker/dist/react-datepicker.css";
 import { ko } from "date-fns/locale";

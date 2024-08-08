@@ -1,10 +1,10 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useRef } from "react";
 import styled from "styled-components";
-import Button from "../common/Button";
-import { IoMdClose } from "react-icons/io";
+import Button from "common/Button";
+import Close from "assets/icons/Close.png"
 import { Dialog, DialogHeader, DialogBody } from "@material-tailwind/react";
-import { musicUpload } from "../API/PortfolioAPI";
-import defaultimage from "../assets/images/default-profile.png";
+import { musicUpload } from "API/PortfolioAPI";
+import defaultimage from "assets/images/default-profile.png";
 import { Link } from "react-router-dom";
 
 const CloseButton = styled.button`
@@ -186,7 +186,6 @@ function PortfolioAdd() {
     formData.append("file", lyricFile);
 
     for (let key of formData.keys()) {
-      // console.log(key, ":", formData.get(key));
     }
 
     try {
@@ -216,7 +215,7 @@ function PortfolioAdd() {
         <CustomHeader>
           <h3>포트폴리오 업로드</h3>
           <CloseButton onClick={handleModal}>
-            <IoMdClose size={30} />
+            <img src={Close} alt='close'/>
           </CloseButton>
         </CustomHeader>
         <CustomBody>

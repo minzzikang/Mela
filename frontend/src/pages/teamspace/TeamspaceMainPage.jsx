@@ -1,7 +1,7 @@
-import DefaultFileShape from "components/DefaultFolderShape";
+import DefaultFileShape from "common/FolderShape";
 import TeamspaceCreateModal from "components/modals/teamspaceModal/TeamspaceCeateModal";
 import Navbar from "common/Navbar";
-import Sidebar from "components/Sidebar";
+import Sidebar from "common/Sidebar/Sidebar";
 import Alarmbar from "components/alarm/Alarmbar";
 import { Outlet, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
@@ -58,7 +58,7 @@ function TeamspaceMain() {
               content={value.teamDescription}
               day={value.endDate}
               image={value.teamspacePictureFileIdx}
-              onClick={(event) => Navi(`/teamspace/${value.teamspaceIdx}`)}
+              onClick={() => Navi(`/teamspace/${value.teamspaceIdx}`)}
             />
           ))}
         </t.FileContainer>

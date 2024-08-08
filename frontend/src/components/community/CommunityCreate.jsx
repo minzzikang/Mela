@@ -1,9 +1,8 @@
-import axios from "axios";
-import useStore from "../../status/store";
+import useStore from "status/store";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { BoardCreate } from "../../API/BoardAPI";
-import { IoMdArrowRoundBack } from "react-icons/io";
+import { BoardCreate } from "API/BoardAPI";
+import BackArrow from "assets/icons/BackArrow.png";
 import styled from "styled-components";
 
 
@@ -14,18 +13,13 @@ function CommunityCreate() {
   const [open, setOpen] = useState(false)
 
   // 로그인 여부에 따라서.
-
-
   const [userinput, setUserInput]  = useState({
     title: '',
     content: '',
   })
   
-
-
   const SubmitHandler = async (event)=> {
     event.preventDefault();
-    // console.log(userinput.title.length, '제목길이')
     if (userinput.title.length < 1 ) { 
       window.alert('제목을 입력해주세요')
       return;
@@ -33,8 +27,6 @@ function CommunityCreate() {
     if (event.key === 'Enter') {
       event.preventDefault();
     }
-    // console.log('제출');
-    // console.log(userinput);
     
     try {
       const response = await BoardCreate({content: userinput.content, title: userinput.title});
@@ -59,7 +51,7 @@ function CommunityCreate() {
     return (
       <>
       <Container>
-      <IoMdArrowRoundBack size='30' className="back-btn" onClick={goBack}/>
+      <img src={BackArrow} className="back-btn" onClick={goBack} alt='back-btn'/>
         <form action="" onSubmit={SubmitHandler}>
           <div className="wrapper">
             <label className="label">Title</label>

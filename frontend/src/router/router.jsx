@@ -1,9 +1,5 @@
 import React from "react";
-import {
-  BrowserRouter as Router,
-  Route,
-  Routes,
-} from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Portfolio from "pages/Portfolio";
 import SigninModal from "components/modals/signinModal";
 import SignupModal from "components/modals/signupModal";
@@ -17,10 +13,10 @@ import TeamspaceFile from "components/teamspace/TeamspaceFile";
 import TeamspaceManage from "components/teamspace/TeamspaceManage";
 import TeamspaceDetail from "pages/teamspace/TeamspaceDetailPage";
 import ForgotPassword from "pages/ForgotPassword";
-import AlarmMain from "pages/AlarmMain";
+import AlarmMain from "pages/alarm/AlarmPage";
 import SequenceMain from "sequence/SequenceMain";
 import Video from "Video/Video";
-import Matching from "pages/Matching";
+import Matching from "pages/matcing/MatchingPage";
 import { useNavigate } from "react-router-dom";
 
 function AppRouter({ className }) {
