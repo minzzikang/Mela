@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { GatherList } from "./../../API/GatherAPI";
-import { useNavigate, useParams, Link } from "react-router-dom";
+import { GatherList } from "API/GatherAPI";
+import { useNavigate, Link } from "react-router-dom";
 import styled from "styled-components";
 import moment from "moment";
-import Button from '../../common/Button';
-import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
-import { shortsList } from "../../API/ShortsAPI";
+import Button from 'common/Button';
+import LeftArrow from "assets/icons/LeftArrow.png";
+import RightArrow from "assets/icons/RightArrow.png";
+import { shortsList } from "API/ShortsAPI";
 
 const PaginationButton = styled.button`
   background-color: ${(props) => (props.isActive ? "#254EF8" : "#13295b")};
@@ -26,7 +27,6 @@ const GatherHome = () => {
   const [videoList, setVideoList] = useState([])
 
   const Navigate = useNavigate();
-  const NowPage = useParams();
 
   const Createbutton = () => {
     Navigate("/gather/create");
@@ -35,7 +35,6 @@ const GatherHome = () => {
   useEffect(() => {
     const fetchGathers = async () => {
       const res = await GatherList({ page: currentPage, size: 10 });
-      // console.log(res.data.boardRecruitRes);
       setGathers(res.data.boardRecruitRes);
       const totalPage = Math.ceil(res.data.totalPageCount / 10);
       setTotalPage(totalPage);
@@ -43,7 +42,6 @@ const GatherHome = () => {
       setVideoList(list)
     };
     fetchGathers();
-    // console.log(totalPage, "총페이지");
   }, [currentPage]);
 
   const getPageNumbers = () => {
@@ -81,7 +79,6 @@ const GatherHome = () => {
   }
   return (
     <MainDiv>
-    {/* <button onClick={()=>console.log(pages, Math.ceil(totalPage / 10)+1, currentPage)}>asdfasdf</button> */}
       <div className="Container">
         <h1>구인</h1>
         <div className="header">
@@ -110,13 +107,6 @@ const GatherHome = () => {
             ))}
           </ul>
         </div>
-
-        {/* 페이지네이션 */}
-        {/* 검색창 */}
-        {/* 검색버튼 */}
-        {/* 글쓰기 버튼 */}
-        {/* 로그인 여부에 따라 글쓰기 버튼 보이기/안보이기 */}
-        {/* 검색창에 입력한 값으로 검색하기 */}
         <br />
         <br />
         <div className="buttonWrapper">
@@ -134,12 +124,11 @@ const GatherHome = () => {
             onClick={async () => await onPageChange(currentPage - 1)}
             disabled={currentPage === 1}
           >
-            <IoIosArrowBack />
+            <img src={LeftArrow} alt='back'/>
           </div>
           <div className="pagination">{pages}</div>
-          {/* <div className="page-btn" onClick={NextPage}> */}
           <div className="page-btn" onClick={async ()=> await onPageChange(currentPage + 1)}>
-            <IoIosArrowForward />
+            <img src={RightArrow} alt='forward' />
           </div>
           </div>
     </MainDiv>

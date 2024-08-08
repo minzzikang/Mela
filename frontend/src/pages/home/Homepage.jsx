@@ -1,11 +1,11 @@
 import * as h from "./Homepage.styled";
-import HomeMatching from "../../components/home/HomeMatching";
-import HomeGather from "../../components/home/HomeGather";
-import HomeCommunity from "../../components/home/HomeCommunity";
-import Navbar from "../../common/Navbar";
-import Button from "../../common/Button";
-import Signin from "../../components/modals/signin";
-import Signup from "../../components/modals/signup";
+import HomeMatching from "components/home/HomeMatching";
+import HomeGather from "components/home/HomeGather";
+import HomeCommunity from "components/home/HomeCommunity";
+import Navbar from "common/Navbar";
+import Button from "common/Button";
+import Signin from "components/signin";
+import Signup from "components/signup";
 import { useEffect, useState } from "react";
 
 function Homepage() {

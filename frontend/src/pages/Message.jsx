@@ -1,21 +1,17 @@
-// Message.jsx
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-import { RiMessage2Line } from "react-icons/ri";
-import { ChatList, EnterChat } from "../API/ChatAPI";
+import Chat from "assets/icons/Chat.png"
+import { ChatList } from "API/ChatAPI";
 import moment from "moment";
-import useStore from "../status/store";
-import { useParams } from "react-router-dom";
-import { Chatting } from "../components/Chatting";
-import { getImg } from "../API/FileAPI";
-import defaultProfile from "../assets/images/default-profile.png"
+import useStore from "status/store";
+import { Chatting } from "components/Chatting";
+import { getImg } from "API/FileAPI";
+import defaultProfile from "assets/images/default-profile.png"
 
 function Message() {
-  const { roomid } = useParams();
   const [chatRooms, setChatRooms] = useState([]);
   const [roomIdx, setRoomIdx] = useState("");
   const [userIdx, setUserIdx] = useState("");
-  const [room, setRoom] = useState({});
   const [otherNickname, setOtherNickname] = useState("");
   const [imgUrl, setImgUrl] = useState([])
   const user = useStore((state) => state.user);
@@ -77,12 +73,12 @@ function Message() {
       <div className="room-list">
         <div className="header">
           <div className="icon">
-            <RiMessage2Line />
+            <img src={Chat} alt='icon' />
           </div>
           <h3>Inbox</h3>
         </div>
         {chatRooms.length >= 1 ? (
-          <Chat>
+          <ChatWrap>
             <ul className="list-group">
               {chatRooms.map((room) => (
                 <li
@@ -120,7 +116,7 @@ function Message() {
                 </li>
               ))}
             </ul>
-          </Chat>
+          </ChatWrap>
         ) : (
           <p>현재 채팅 중인 방이 없습니다.</p>
         )}
@@ -160,7 +156,7 @@ const Container = styled.div`
   }
 `;
 
-const Chat = styled.div`
+const ChatWrap = styled.div`
   display: flex;
   flex-direction: column;
   // height: 5rem;

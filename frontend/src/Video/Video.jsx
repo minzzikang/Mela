@@ -1,27 +1,17 @@
 import { Component } from "react";
 import { OpenVidu } from "openvidu-browser";
-import { useState, useEffect, useRef } from "react";
-import { useParams, useLocation } from "react-router-dom"; 
 import styled from "styled-components";
 import axios from "axios";
 import UserVideoComponent from "./UserVideoComponent";
-import ArrowBackIcon from '@mui/icons-material/ArrowBack';
-import MicRoundedIcon  from '@mui/icons-material/MicRounded' ;
-import MicOffRoundedIcon from '@mui/icons-material/MicOffRounded';
-import VideocamOffRoundedIcon from '@mui/icons-material/VideocamOffRounded';
-import VideocamRoundedIcon from '@mui/icons-material/VideocamRounded';
-import ExitToAppIcon from '@mui/icons-material/ExitToApp';
-import {
-  createViduSession,
-  GetSessionId,
-  DeleteViduSession,
-} from "../API/TeamspaceAPI";
-import { fetchUser } from "../API/UserAPI";
-import ScheduleAllModal from "./../components/modals/ScheduleAll";
+import Mic from "assets/icons/Mic.png"
+import MicOff from "assets/icons/MicOff.png"
+import VideoIcon from "assets/icons/Video.png"
+import VideoOff from "assets/icons/VideoOff.png"
+import Exit from "assets/icons/Exit.png"
+import { createViduSession, GetSessionId } from "API/TeamspaceAPI";
+import { fetchUser } from "API/UserAPI";
 
-// const APPLICATION_SERVER_URL =
-//   process.env.NODE_ENV === "production" ? "" : "https://demos.openvidu.io/";
-  const APPLICATION_SERVER_URL = "https://demos.openvidu.io/";
+const APPLICATION_SERVER_URL = "https://demos.openvidu.io/";
 
 const OPENVIDU_SERVER_URL = "https://localhost:4443";
 const OPENVIDU_SERVER_SECRET = "mela";
@@ -68,14 +58,12 @@ class Video extends Component {
     switch (target) {
       case "camera":
         this.setState({ isCamera: !this.state.isCamera }, () => {
-          // console.log(this.state.isCamera);
           this.state.publisher.publishVideo(this.state.isCamera);
         });
 
         break;
       case "mic":
         this.setState({ isMic: !this.state.isMic }, () => {
-          // console.log(this.state.isMic);
           this.state.publisher.publishAudio(this.state.isMic);
         });
         break;
@@ -89,7 +77,6 @@ class Video extends Component {
   }
   async componentDidMount() {
     window.addEventListener("beforeunload", this.onbeforeunload);
-    // console.log("유저이름 불러오기");
     await this.getUserName();
     /// 프론트 단독
     this.setState({
@@ -101,7 +88,6 @@ class Video extends Component {
         mySessionId: temp,
       },
       () => {
-        // console.log(temp, "callback");
         if (!this.state.session) {
           this.joinSession();
         }
@@ -116,19 +102,15 @@ class Video extends Component {
     // let tempSession = await GetSessionId(
     //   window.location.pathname.split("/").pop()
     // )
-    // console.log(tempSession, "tempSession")
     // if (tempSession === 500) {
     //   console.log(500)
     //   tempSession  = await createViduSession(
     //     window.location.pathname.split("/").pop()
     //   );
-    //     console.log(tempSession, "tempSession at if")
     // }
     //  this.setState({
     //   mySessionId: tempSession,
     // });
-    // console.log("tempSession: ", tempSession);
-    // console.log(tempSession, "temp");
     // if (!this.state.session) {
     //   await this.joinSession();
     // }
@@ -142,14 +124,9 @@ class Video extends Component {
 
   createHandler = (e) => {
     e.preventDefault();
-    // console.log(this.state);
     createViduSession(this.state.teamspaceIdx)
-      .then((res) => {
-        // console.log(res);
-      })
-      .catch((err) => {
-        // console.log(err);
-      });
+      .then((res) => {})
+      .catch((err) => {});
   };
 
   componentWillUnmount() {
@@ -311,7 +288,6 @@ class Video extends Component {
   }
 
   async switchCamera(e) {
-    // console.log(e);
     try {
       const devices = await this.OV.getDevices();
       var videoDevices = devices.filter(
@@ -333,7 +309,6 @@ class Video extends Component {
             mirror: true,
           });
 
-          //newPublisher.once("accessAllowed", () => {
           await this.state.session.unpublish(this.state.mainStreamManager);
 
           await this.state.session.publish(newPublisher);
@@ -378,16 +353,12 @@ class Video extends Component {
 
   async getSessionId() {
     const res = await GetSessionId(this.state.teamspaceIdx);
-    // console.log(res);
     this.setState({
       mySessionId: res,
     });
   }
-  
-  render() {
-    // const Check = () => console.log(this.props);
-  // console.log(this.state.subscribers.length)
 
+  render() {
     const mySessionId = this.state.mySessionId;
     const myUserName = this.state.myUserName;
     const teamspaceIdx = sessionStorage.getItem("teamspaceIdx");
@@ -396,12 +367,11 @@ class Video extends Component {
     const leaveButtonHandler = async () => {
       await this.leaveSession();
       goBack();
-    }
+    };
     return (
       <TOP>
         <div>
           <MainContainer>
-          {/* <button onClick={()=>console.log(this.state)}> State </button> */}
             {this.state.session === undefined ? (
               <div>
                 <div>
@@ -421,27 +391,25 @@ class Video extends Component {
                       value={mySessionId}
                       onChange={this.handleChangeSessionId}
                     />
-                    <input
-                      type="submit"
-                      value="Enter"
-                      name="commit"
-                    />
+                    <input type="submit" value="Enter" name="commit" />
                   </form>
                 </div>
               </div>
             ) : null}
             <div className="buttonHolder">
-              {/* <h1>{mySessionId}</h1> */}
-              <div onClick={leaveButtonHandler}> 
-                <ExitToAppIcon/>
+              <div onClick={leaveButtonHandler}>
+                <img src={Exit} alt='exit' />
               </div>
-              <div onClick={() => this.handleToggle('mic')}>
-                {this.state.isMic ? <MicRoundedIcon/> : <MicOffRoundedIcon/>}
+              <div onClick={() => this.handleToggle("mic")}>
+                {this.state.isMic ? <img src={Mic} alt='mic'/> : <img src={MicOff} alt='mic-off'/>}
               </div>
-              <div onClick={() => this.handleToggle('camera')}>
-                {this.state.isCamera ? <VideocamRoundedIcon/> : <VideocamOffRoundedIcon/>}
+              <div onClick={() => this.handleToggle("camera")}>
+                {this.state.isCamera ? (
+                  <img src={VideoIcon} alt='video' />
+                ) : (
+                  <img src={VideoOff} alt='video-off' />
+                )}
               </div>
-              {/* 212 */}
             </div>
             {this.state.session !== undefined ? (
               <div>
@@ -501,7 +469,7 @@ const StreamWrapper = styled.div`
   grid-template-columns: repeat(2, 1fr);
   grid-gap: 5px;
   height: 50rem;
-  padding:1px;
+  padding: 1px;
   width: 100%;
   div {
     width: 100%;

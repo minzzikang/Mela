@@ -6,17 +6,18 @@ import {
   BoardDelete,
   CommentDelete,
   BoardLike,
-} from "../../API/BoardAPI";
+} from "API/BoardAPI";
 import styled from "styled-components";
 import { useEffect, useState } from "react";
-import useStore from "../../status/store";
-import { checkBoardLike } from "./../../API/BoardAPI";
-import { GoHeart, GoHeartFill, GoBell } from "react-icons/go";
-import { FaRegClock } from "react-icons/fa6";
-import { FaTrashAlt } from "react-icons/fa";
-import { MdEdit } from "react-icons/md";
-import { LuEye } from "react-icons/lu";
-import { IoMdArrowRoundBack } from "react-icons/io";
+import { checkBoardLike } from "API/BoardAPI";
+import Alarm from "assets/icons/Bell.png";
+import Heart from "assets/icons/Heart.png";
+import HeartFill from "assets/icons/HeartFill.png";
+import Clock from "assets/icons/Clock.png";
+import Trash from "assets/icons/Trash.png";
+import Edit from "assets/icons/Edit.png";
+import Eye from "assets/icons/Eye.png"
+import BackArrow from "assets/icons/BackArrow.png";
 
 function CommunityDetail() {
   const [data, setData] = useState(null);
@@ -48,8 +49,7 @@ function CommunityDetail() {
       await CommentDelete({ boardIdx, commentIdx });
       const response = await GetComment({ boardIdx });
       setComments(response.data);
-    } catch (error) {
-    }
+    } catch (error) {}
   };
 
   useEffect(() => {
@@ -60,7 +60,6 @@ function CommunityDetail() {
       setComments(Comments.data);
       setLikeCount(response.data.likeNum);
       setCommentCount(Comments.data.length);
-      // console.log(Comments);
     };
     detailData();
   }, [likeCount, boardIdx]);
@@ -90,7 +89,6 @@ function CommunityDetail() {
 
   const postEditHanlder = (e) => {
     e.preventDefault();
-    // console.log()
     Navigate("./edit");
   };
 
@@ -126,7 +124,6 @@ function CommunityDetail() {
     }
     const check = async () => {
       const response = await checkBoardLike({ boardIdx, currentUserIdx });
-      // console.log("response: ", response);
     };
     check();
   }, [boardIdx, currentUserIdx]);
@@ -136,12 +133,9 @@ function CommunityDetail() {
     if (currentUserIdx === null) {
       return;
     }
-    // console.log("asd", currentUserIdx);
     // 유저가 좋아요를 했는가 확인하고
     const check = async () => {
-      // console.log(isLiked);
       const res = await checkBoardLike({ boardIdx, currentUserIdx });
-      // console.log(response.data.message==='true')
       if (res.data.message === "true") {
         setIsLiked(true); // 상태 업데이트를 true로 직접 설정
       } else {
@@ -166,8 +160,9 @@ function CommunityDetail() {
           <>
             <div className="title">
               <h1>{title}</h1>
-              <IoMdArrowRoundBack
-                size="30"
+              <img
+                src={BackArrow}
+                alt="back-btn"
                 className="back-btn"
                 onClick={goHome}
               />
@@ -179,11 +174,11 @@ function CommunityDetail() {
                   <div className="infoContainer">
                     <div className="infoDate">
                       <div className="registdate">
-                        <FaRegClock className="icon" />
+                        <img src={Clock} alt="icon" />
                         {registDate}
                       </div>
                       <div className="viewCount">
-                        <LuEye className="icon" size="20" />
+                        <img src={Eye} className="icon" alt='icon' />
                         {viewNum}
                       </div>
                     </div>
@@ -211,13 +206,13 @@ function CommunityDetail() {
             <div className="edit-del">
               {userIdx === currentUserIdx && (
                 <span>
-                  <FaTrashAlt onClick={postDeleteHanlder} className="icon" />
+                  <img src={Trash} onClick={postDeleteHanlder} alt="del" />
                   삭제
                 </span>
               )}
               {userIdx === currentUserIdx && (
                 <span>
-                  <MdEdit onClick={postEditHanlder} className="icon" />
+                  <img srt={Edit} onClick={postEditHanlder} alt="edit" />
                   수정
                 </span>
               )}
@@ -226,17 +221,17 @@ function CommunityDetail() {
           <LikeContainer>
             {isLiked ? (
               <span>
-                <GoHeartFill onClick={BoardLikeHandler} className="icon" />
+                <img src={HeartFill} onClick={BoardLikeHandler} alt="dislike" />
               </span>
             ) : (
               <span>
-                <GoHeart onClick={BoardLikeHandler} className="icon" />
+                <img src={Heart} onClick={BoardLikeHandler} alt="like" />
               </span>
             )}
             {likeCount}
           </LikeContainer>
           <div className="comment-title">
-            <GoBell className="icon" />
+            <img src={Alarm} alt="comment" />
             <span>댓글</span>
             <div className="comment-count">{comments && comments.length}</div>
           </div>
@@ -269,7 +264,9 @@ function CommunityDetail() {
                       <div>{comment.content}</div>
                       {comment.userIdx === currentUserIdx && (
                         <div>
-                          <FaTrashAlt
+                          <img
+                            src={Trash}
+                            alt="delComment"
                             onClick={() =>
                               CommentDeleteHandler(comment.commentIdx)
                             }
@@ -288,8 +285,6 @@ function CommunityDetail() {
           )}
         </ul>
       </div>
-
-
     </MainDiv>
   );
 }

@@ -1,17 +1,15 @@
 import { useNavigate, useParams } from "react-router-dom";
 import { BoardDetail, BoardUpdate } from "../../API/BoardAPI";
 import { useEffect, useState } from "react";
-import useStore from "../../status/store";
 import styled from "styled-components";
+
 
 function CommunityEdit() {
   const { boardIdx } = useParams();
-  // const currentUserIdx = useStore(s => s.user ? s.user.userIdx : null)
   const currentUserIdx = Number(localStorage.getItem('userIdx'));
   const [alertShown, setAlertShown] = useState(false);
   const [isAuthor, setIsAuthor] = useState(null)
   const [isLoading, setIsLoading] = useState(true); // 로딩 상태 추가
-  
   const [userinput, setUserInput] = useState({
     title: '',
     content: '',
@@ -63,7 +61,7 @@ function CommunityEdit() {
   };
   
   if (isLoading) {
-    return <div>로딩 중...</div>; // 로딩 중일 때는 로딩 메세지
+    return <div>로딩 중...</div>
   }
   return (
     isAuthor ? (

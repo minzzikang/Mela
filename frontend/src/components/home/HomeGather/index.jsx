@@ -1,7 +1,7 @@
 import { GatherList } from "../../../API/GatherAPI";
 import RightDouble from "../../../assets/icons/Expand_right_double.svg";
 import LeftDouble from "../../../assets/icons/Expand_left.png";
-import FolderNoImage from "../../../components/FolderNoImage";
+import FolderNoImage from "../../../common/FolderShape/FolderNoImageShape";
 import Button from "../../../common/Button";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
