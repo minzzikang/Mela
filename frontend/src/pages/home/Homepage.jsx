@@ -4,8 +4,8 @@ import HomeGather from "components/home/HomeGather";
 import HomeCommunity from "components/home/HomeCommunity";
 import Navbar from "common/Navbar";
 import Button from "common/Button";
-import Signin from "components/modals/signinModal";
-import Signup from "components/modals/signupModal";
+import Signin from "components/signin";
+import Signup from "components/signup";
 import { useEffect, useState } from "react";
 
 function Homepage() {

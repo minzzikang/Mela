@@ -6,12 +6,12 @@ const Index = ({ name, children, onClose }) => {
     <m.Container>
       <m.BlackBox onClick={onClose} />
       <m.Wrap>
+        <m.Backdrop>
+          <img src={BackBtn} alt="close" onClick={onClose} />
+        </m.Backdrop>
         <m.ModalName>{name}</m.ModalName>
         {children}
       </m.Wrap>
-      <m.Backdrop>
-        <img src={BackBtn} alt="close" onClick={onClose} />
-      </m.Backdrop>
     </m.Container>
   );
 };

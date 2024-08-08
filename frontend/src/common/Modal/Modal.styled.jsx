@@ -29,7 +29,7 @@ export const Wrap = styled.div`
   background: linear-gradient(180deg, #0c0a15 0%, #171930 100%);
   border-radius: 12px;
   width: 30vw;
-  height: 60vh;
+  height: 75vh;
   padding: 2.5rem;
 `;
 

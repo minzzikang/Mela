@@ -1,8 +1,8 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Portfolio from "pages/portfolio/PortfolioPage";
-import SigninModal from "components/modals/signinModal";
-import SignupModal from "components/modals/signupModal";
+import SigninModal from "components/signin";
+import SignupModal from "components/signup";
 import Gather from "pages/Gather";
 import UserUpdate from "pages/UserUpdate";
 import PortfolioAll from "pages/portfolio/PortfolioMorePage";

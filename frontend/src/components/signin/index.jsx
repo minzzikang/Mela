@@ -4,7 +4,7 @@ import { useNavigate, Link } from "react-router-dom";
 import * as s from "./Signin.styled";
 import { useState } from "react";
 import Button from "common/Button";
-import BackBtn from "assets/icons/BackBtn.png";
+import Modal from "common/Modal";
 
 function Index({ onClose }) {
   const setIsLogined = useStore((state) => state.setIsLogined);
@@ -45,50 +45,43 @@ function Index({ onClose }) {
   };
 
   return (
-    <s.Container>
-      <s.BlackBox onClick={onClose} />
-      <s.Wrap>
-        <s.ModalName>SIGN IN</s.ModalName>
-        <form onSubmit={handleSubmit}>
-          <s.FormWrap>
-            <s.Label>Email</s.Label>
-            <s.Input
-              id="id"
-              type='email'
-              placeholder="ssafy@gmail.com"
-              onChange={handleChange}
-              required
-            />
-          </s.FormWrap>
-          <s.FormWrap>
-            <s.Label>Password</s.Label>
-            <s.Input
-              id="password"
-              type='password'
-              placeholder="Enter your password"
-              required
-              onChange={handleChange}
-            />
-          </s.FormWrap>
-          <Button
-            type="submit"
-            text="Log in"
-            width="100%"
-            height="2.5rem"
-            backgroundcolor="#254ef8"
-            borderradius="0.5rem"
+    <Modal name={"SIGN IN"} onClose={onClose}>
+      <form onSubmit={handleSubmit}>
+        <s.FormWrap>
+          <s.Label>Email</s.Label>
+          <s.Input
+            id="id"
+            type="email"
+            placeholder="ssafy@gmail.com"
+            onChange={handleChange}
+            required
           />
-        </form>
-        <Link to="/forgotPassword">
-          <div id="find-password" className="find-password">
-            Forgot password
-          </div>
-        </Link>
-        <s.Backdrop onClick={onClose}>
-          <img src={BackBtn} alt='back button'/>
-        </s.Backdrop>
-      </s.Wrap>
-    </s.Container>
+        </s.FormWrap>
+        <s.FormWrap>
+          <s.Label>Password</s.Label>
+          <s.Input
+            id="password"
+            type="password"
+            placeholder="Enter your password"
+            required
+            onChange={handleChange}
+          />
+        </s.FormWrap>
+        <Button
+          type="submit"
+          text="Log in"
+          width="100%"
+          height="2.5rem"
+          backgroundcolor="#254ef8"
+          borderradius="0.5rem"
+        />
+      </form>
+      <Link to="/forgotPassword">
+        <s.Text id="find-password">
+          Forgot password
+        </s.Text>
+      </Link>
+    </Modal>
   );
 }
 
