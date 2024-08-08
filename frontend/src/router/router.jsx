@@ -1,11 +1,11 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import Portfolio from "pages/Portfolio";
+import Portfolio from "pages/portfolio/PortfolioPage";
 import SigninModal from "components/modals/signinModal";
 import SignupModal from "components/modals/signupModal";
 import Gather from "pages/Gather";
 import UserUpdate from "pages/UserUpdate";
-import PortfolioAll from "pages/PortfolioAll";
+import PortfolioAll from "pages/portfolio/PortfolioMorePage";
 import Message from "pages/Message";
 import TeamspaceTeam from "components/teamspace/TeamspaceTeam";
 import TeamspaceAudio from "components/teamspace/TeamspaceAudio";

@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
+import Button from "common/Button";
 import styled from "styled-components";
-import PortfolioAdd from "components/portfolio/PortfolioAdd";
-import Headphone from "assets/icons/Headphone.png"
+import PortfolioAdd from "components/portfolio";
+import Headphone from "assets/icons/Headphone.png";
 import { othersInfo } from "API/UserAPI";
 import { useParams } from "react-router-dom";
 import DefaultPortfolio from "common/Portfolio";
@@ -37,10 +38,11 @@ const AllList = styled.div`
   }
 `;
 
-function PortfolioAll() {
+function PortfolioMorePage() {
   const emailIdInfo = useParams();
   const [userValues, setUserValues] = useState({});
   const [musicValues, setMusicValues] = useState([]);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
     const getInfo = async () => {
@@ -48,8 +50,7 @@ function PortfolioAll() {
         const response = await othersInfo(emailIdInfo.emailId);
         setUserValues(response[0]);
         setMusicValues(response[2]);
-      } catch (err) {
-      }
+      } catch (err) {}
     };
 
     getInfo();
@@ -59,13 +60,18 @@ function PortfolioAll() {
     <>
       <Hedaer>
         <h1>{userValues.nickname}님의 Portfolio</h1>
-        <div className="btn-wrapper">
-          <PortfolioAdd />
-        </div>
+        <Button
+          text={"Add"}
+          backgroundcolor={"#254ef8"}
+          fontcolor={"white"}
+          width={"100px"}
+          onClick={() => setIsModalOpen(true)}
+        />
+        {isModalOpen && <PortfolioAdd />}
       </Hedaer>
       <AllList>
         <div className="title">
-          <img src={Headphone} alt='icon' />
+          <img src={Headphone} alt="icon" />
           <h3>All</h3>
           <Container>
             {Object.entries(musicValues).map(([key, value]) => (
@@ -83,7 +89,7 @@ function PortfolioAll() {
   );
 }
 
-export default PortfolioAll;
+export default PortfolioMorePage;
 
 const Container = styled.div`
   display: flex;
