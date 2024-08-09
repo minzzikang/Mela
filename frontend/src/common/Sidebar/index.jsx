@@ -106,9 +106,13 @@ function Index({ paddingtop }) {
               </s.ListItem>
               <s.ListItem>
                 <s.Icon>
-                  <img src={Logout} alt="logout" />
+                  <img
+                    src={Logout}
+                    alt="logout"
+                    className='matching-icon'
+                  />
                 </s.Icon>
-                <span onClick={logout}>Logout</span>
+                <span onClick={logout} style={{ marginLeft: '0.7rem'}}>Logout</span>
               </s.ListItem>
             </s.List>
           </s.MenuWrap>

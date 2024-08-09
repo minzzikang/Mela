@@ -4,11 +4,12 @@ import TeamspaceTeam from "components/teamspace/TeamspaceTeam";
 import TeamspaceAudio from "components/teamspace/TeamspaceAudio";
 import TeamspaceFile from "components/teamspace/TeamspaceFile";
 import TeamspaceManage from "components/teamspace/TeamspaceManage";
-import TeamspaceInviteModal from "components/modals/teamspaceModal/TeamspaceInviteModal";
-import ScheduleBar from "components/teamspace/TeamspaceSchedule/TeamspaceScheduleBar";
+import TeamspaceInvite from "components/teamspace/TeamspaceInvite";
+import ScheduleBar from "components/teamspace/TeamspaceSchedule";
 import * as t from "./TeamspaceDetailPage.styled";
+import Video from "assets/icons/Video.png";
 
-function TeamspaceDetail() {
+function TeamspaceDetailPage() {
   const [currentTab, clickTab] = useState(0);
   const teamspaceIdx = useParams().teamspaceIdx;
   const Navigate = useNavigate();
@@ -58,7 +59,7 @@ function TeamspaceDetail() {
               ))}
             </t.TabMenu>
             <div className="button-wrapper">
-              <TeamspaceInviteModal />
+              <TeamspaceInvite />
             </div>
           </t.Header>
           <div className="content-box">
@@ -66,9 +67,10 @@ function TeamspaceDetail() {
             <div className="schedule-box">
               <ScheduleBar />
               <div>
-                <h1 onClick={goVideo} style={{ color: "white" }}>
+                <img src={Video} alt="video-chat" />
+                <span onClick={goVideo} style={{ color: "white" }}>
                   화상 회의 참여하기
-                </h1>
+                </span>
               </div>
             </div>
           </div>
@@ -79,4 +81,4 @@ function TeamspaceDetail() {
     return <div>로그인이 필요합니다.</div>;
   }
 }
-export default TeamspaceDetail;
+export default TeamspaceDetailPage;
