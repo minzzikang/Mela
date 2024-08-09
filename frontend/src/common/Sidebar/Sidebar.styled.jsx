@@ -7,7 +7,6 @@ export const Container = styled.div`
   margin-left: 30px;
   display: flex;
   flex-direction: column;
-  width: 12vw;
 `;
 
 export const Header = styled.div`
@@ -27,19 +26,23 @@ export const MenuWrap = styled.div`
   height: calc(100vh-2rem);
   max-width: 20rem;
   font-size: 0.8rem;
-  color: white;
 `;
 
 export const List = styled.div`
   display: flex;
+  flex-direction: column;
 `;
 
 export const ListItem = styled.div`
-  margin-top: 30px;
+  margin-top: 1rem;
   margin-left: 1rem;
-  margin-bottom: 30px;
   display: flex;
   align-item: center;
+
+  span {
+    font-size: large;
+    cursor: pointer;
+  }
 `;
 
 export const Icon = styled.div`
@@ -51,11 +54,6 @@ export const CustomLink = styled(Link)`
   text-decoration: none;
   color: white;
   margin-left: 7.5%;
-
-  span {
-    margin-left: 10%;
-    font-size: large;
-  }
 `;
 
 export const Profile = styled.img`

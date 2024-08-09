@@ -45,11 +45,9 @@ function AlarmAll() {
     checkAlarm.forEach((notificationIdx) => {
       checkNotification({ notificationid: notificationIdx })
         .then(() => {
-          // console.log(notificationIdx)
           refreshNotification();
         })
         .catch((err) => {
-          // console.log(err)
         });
     });
   };

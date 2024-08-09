@@ -1,22 +1,22 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import Portfolio from "pages/portfolio/PortfolioPage";
+import { BrowserRouter as Route, Routes } from "react-router-dom";
+import Profile from "pages/profile/ProfilePage";
 import SigninModal from "components/signin";
 import SignupModal from "components/signup";
-import Gather from "pages/Gather";
-import UserUpdate from "pages/UserUpdate";
-import PortfolioAll from "pages/portfolio/PortfolioMorePage";
-import Message from "pages/Message";
+import Gather from "pages/gather/GatherPage";
+import UserUpdate from "pages/profile/ProfileUserEditPage";
+import PortfolioAll from "pages/profile/PortfolioMorePage";
+import Message from "pages/message/MessagePage";
+import Matching from "pages/matcing/MatchingPage";
 import TeamspaceTeam from "components/teamspace/TeamspaceTeam";
 import TeamspaceAudio from "components/teamspace/TeamspaceAudio";
 import TeamspaceFile from "components/teamspace/TeamspaceFile";
 import TeamspaceManage from "components/teamspace/TeamspaceManage";
 import TeamspaceDetail from "pages/teamspace/TeamspaceDetailPage";
-import ForgotPassword from "pages/ForgotPassword";
+import ForgotPassword from "pages/certification/ForgotPasswordPage";
 import AlarmMain from "pages/alarm/AlarmPage";
 import SequenceMain from "sequence/SequenceMain";
 import Video from "Video/Video";
-import Matching from "pages/matcing/MatchingPage";
 import { useNavigate } from "react-router-dom";
 
 function AppRouter({ className }) {
@@ -32,7 +32,7 @@ function AppRouter({ className }) {
   return (
     <div className={className}>
       <Routes>
-        <Route path="/portfolio/:emailId" element={<Portfolio />} />
+        <Route path="/portfolio/:emailId" element={<Profile />} />
         <Route path="/gather" exact element={<Gather />} />
 
         {lgd ? (

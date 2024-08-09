@@ -5,21 +5,21 @@ import GlobalStyle from "styles/GlobalStyle";
 import styled, { ThemeProvider } from "styled-components";
 import { theme } from "styles/theme";
 import AppRouter from "router/router";
-import Sidebar from "common/Sidebar/Sidebar";
-import Boards from "pages/Boards";
+import Sidebar from "common/Sidebar";
+import Community from "pages/community/CommuityPage";
 import CommunityCreate from "components/community/CommunityCreate";
 import CommunityDetail from "components/community/CommunityDetail";
 import CommunityHome from "components/community/CommunityHome";
 import CommunityEdit from "components/community/CommunityEdit";
 import TeamspaceMain from "pages/teamspace/TeamspaceMainPage";
-import EmailVerify from "pages/EmailVerify";
+import EmailVerify from "pages/certification/EmailVerifyPage";
 import GatherHome from "components/gather/GatherHome";
 import GatherCreate from "components/gather/GatherCreate";
 import GatherDetail from "components/gather/GatherDetail";
 import GatherEdit from "components/gather/GatherEdit";
-import ChangePassword from "pages/ChangePassword";
-import TotalSearch from "pages/TotalSearch";
-import Gather from "pages/Gather";
+import ChangePassword from "pages/certification/ChangePasswordPage";
+import Search from "pages/search/SearchPage";
+import Gather from "pages/gather/GatherPage";
 
 function App() {
   const lgd = localStorage.getItem("accessToken") ? true : false;
@@ -34,10 +34,10 @@ function App() {
               <Route path="/Home" element={<Homepage />} />
               <Route path="/" element={<Homepage />} />
               <Route path="/teamspace" element={<TeamspaceMain />} />
-              <Route path="/search/:word" element={<TotalSearch />} />
+              <Route path="/search/:word" element={<Search />} />
               <Route path="/signup/:emailId" element={<EmailVerify />} />
               <Route path="/maingather" element={<Gather />} />
-              <Route path="/gather" element={<Boards />}>
+              <Route path="/gather" element={<Community />}>
                 <Route index element={<GatherHome />} />
                 {lgd ? (
                   <Route path="edit/:gatherIdx" element={<GatherEdit />} />
@@ -52,7 +52,7 @@ function App() {
                   <Route path="detail/:gatherIdx" element={<GatherDetail />} />
                 ) : null}
               </Route>
-              <Route path="/community" element={<Boards />}>
+              <Route path="/community" element={<Community />}>
                 <Route path="/community" exact element={<CommunityHome />} />
                 {lgd ? (
                   <Route

@@ -1,7 +1,6 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import styled from "styled-components";
 
 function GatherCal({ onDateChange }) {
   const [selectedDate, setSelectedDate] = useState(null);

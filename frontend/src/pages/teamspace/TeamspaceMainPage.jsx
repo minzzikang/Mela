@@ -1,15 +1,15 @@
 import DefaultFileShape from "common/FolderShape";
-import TeamspaceCreateModal from "components/modals/teamspaceModal/TeamspaceCeateModal";
+import TeamspaceCreate from "components/teamspace/TeamspaceCreate";
 import Navbar from "common/Navbar";
-import Sidebar from "common/Sidebar/Sidebar";
-import Alarmbar from "components/alarm/Alarmbar";
+import Sidebar from "common/Sidebar";
+import Alarmbar from "components/alarm/AlarmBar";
 import { Outlet, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { TeamspaceList } from "API/TeamspaceAPI";
 import * as t from "./TeamspaceMainPage.styled";
 import Add from "assets/icons/Add.png";
 
-function TeamspaceMain() {
+function TeamspaceMainPage() {
   const Navi = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
   const [newTeamspace, setNewTeamspace] = useState(null);
@@ -49,7 +49,7 @@ function TeamspaceMain() {
           <t.Add src={Add} alt="add" />
           <span>Create</span>
         </t.AddWrap>
-        {isOpen && <TeamspaceCreateModal onClose={() => setIsOpen(false)} />}
+        {isOpen && <TeamspaceCreate onClose={() => setIsOpen(false)} />}
         <t.FileContainer>
           {Object.entries(values).map(([key, value]) => (
             <DefaultFileShape
@@ -70,4 +70,4 @@ function TeamspaceMain() {
   );
 }
 
-export default TeamspaceMain;
+export default TeamspaceMainPage;
