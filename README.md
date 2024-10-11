@@ -114,8 +114,11 @@ Mela!는 メラメラ(메라메라), 일본어로 활활을 뜻하는 의성어�
 - ### 아키텍처 구성도
 <img src=./Docs/아키텍처구성도.PNG>
 
-- ### [화면 정의서](https://www.figma.com/file/IX4LHI9096wtPgbeMZF4tr/C201-team-library?type=design&node-id=0%3A1&mode=design&t=ZOYZB5RR2vzpZ1Hh-1)
-- ### [요구사항 명세서](https://valuable-flyingfish-5f5.notion.site/4e8269aba1c0414bb997d0a2554833af?pvs=74)
+- ### [요구사항 명세서](https://www.notion.so/11c9508757c2805ab5b6fa7ef9962fe6)
+- ### [기능 명세서](https://www.notion.so/11b9508757c28048ab16d79f1f7d562d)
+- ### [API 명세](https://www.notion.so/API-11b9508757c280a8b55cf270eb568774)
+- ### [화면 설계](https://www.notion.so/11b9508757c2805bbb47c45f0c2ff014)
+
 
 ## :rocket: 프로젝트 전체 스크린샷
 ### 1. Main
